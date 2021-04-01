@@ -3,11 +3,15 @@ Holds scripts for artifactory cleanup
 
 General Stuff
 Script A: Via Artifactory. get list of all images older than X period of time, say in list toDelete
+
 Script B: Via kubectl. Get list of all images currently in use. Say in a list of ToKeep
+
 Script C: Get all vulnerable images (not sure how do to yet) in list getOutOfHere
+
 Script D: Remove any images in ToKeep that are in ToDelete
 
 Script E: Add 'getOutOfHere' to 'ToDelete'
+
 Script F: Run the list to delete everything.
 
 The general run through of this may include A-F with D-F being if we have a vulnerability. 
@@ -18,6 +22,7 @@ no idea what XRAY identified as "vulnerable" since XRAY will no longer have acce
 Another way of doing that is to update any images whose tags are not found in artifactory and update it. 
 (Will fail if the image NAME changes ala not the SHA that identifies it )
 
+Rolling Update? https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/
 
 
 # IMPORTANT

@@ -11,4 +11,7 @@
 # old-images-request is what we will send
 
 #obvious fill in the blanks here, something like this probably 
-curl -u myUser:<Token> -X POST -d @old-images-request "someurlhere" >> imagelist.json 
+curl -u myUser:<Token> -X POST -d @old-images-request "someurlhere" >> image-list.json 
+
+#Should produce something like in example-image-list.json
+#From here we want the [repo] as well as [path] as well as [name] probably which may have something like "jupyterlab-cpu:dee04931"

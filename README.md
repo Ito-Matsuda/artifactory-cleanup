@@ -1,3 +1,6 @@
+Hey if you're looking here turn back there's probably nothing of value here.
+
+
 # artifactory-cleanup
 Holds scripts for artifactory cleanup
 

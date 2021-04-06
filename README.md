@@ -5,13 +5,13 @@ Hey if you're looking here turn back there's probably nothing of value here.
 Holds scripts for artifactory cleanup
 
 General Stuff
-Script A: Via Artifactory. get list of all images older than X period of time, say in list toDelete
+Script A: Via Artifactory. get list of all images older than X period of time, say in list toDelete. This will be using their `manifest`.
 
 Script B: Via kubectl. Get list of all images currently in use. Say in a list of ToKeep
 
-Script C: Get all vulnerable images (not sure how do to yet) in list getOutOfHere
+Script C: Remove any images in ToKeep that are in ToDelete
 
-Script D: Remove any images in ToKeep that are in ToDelete
+Script D: Get all vulnerable images (not sure how do to yet) in list getOutOfHere
 
 Script E: Add 'getOutOfHere' to 'ToDelete'
 

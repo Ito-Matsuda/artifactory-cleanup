@@ -16,3 +16,5 @@ kubectl get pods --namespace jose-matsuda -o jsonpath="{.items[*].spec.container
 
 #Should eventually be (with permissions)
 #kubectl get pods --all-namespaces -o jsonpath="{.items[*].spec.containers[*].image}"
+
+#If i could get these images to match up with their respective manifest id in artifactory that would be ACE

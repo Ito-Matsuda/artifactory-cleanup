@@ -1,5 +1,6 @@
 Hey if you're looking here turn back there's probably nothing of value here.
 
+This would be ran in its own image? 
 
 # artifactory-cleanup
 Holds scripts for artifactory cleanup

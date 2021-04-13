@@ -12,4 +12,4 @@ How do i get the name of a deployment?
 STEP X
 
 Some update of pods? Might need to be ran on demand? Using 4-get-vulnerable and then some other step matching it to a list of
-currently in use images
+currently in use images.

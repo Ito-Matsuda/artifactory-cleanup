@@ -1,0 +1,8 @@
+# These are the images Brendan pulled from the cluster
+# around a week ago (July 25th or so)
+# Just to provide an idea of what's in use.
+
+      4 3.7.6-buster
+     49 alpine:latest
+    434 argoproj/argoexec:v2.3.0
+      6 k8scc....dacr.azurecr.io/machine-learning-notebook-cpu:6accensoredXD7e4602ce98b073b92ce

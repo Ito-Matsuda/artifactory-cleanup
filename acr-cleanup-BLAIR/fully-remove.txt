@@ -1,0 +1,29 @@
+# Notes: I (Blair) am responsible for most of these;
+# The exception is ml-workspace, those should be removed because
+# they were replaced by remote-desktop-*
+
+blair-flask-app
+blair-kf-pipeline-test
+covid-rl-agents
+kf-notebook-no-root
+kf-rstudio
+kf-rstudio-testing
+kf-rstudio-testing-2
+kf-rstudio-testing-3
+kubeflow-datascience-full
+kubeflow-datascience-python
+kubeflow-datascience-r
+sedar/mapi
+sedar/webapp
+sedar-mapi
+sedar-webapp
+
+# These *should* be removed,
+# however they are in use...
+# I guess some machines have been on a long time?
+#
+# ml-workspace-base
+# ml-workspace-cpu
+# ml-workspace-geomatics
+# ml-workspace-rstudio
+# ml-workspace-test

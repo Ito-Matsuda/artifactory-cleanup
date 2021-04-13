@@ -56,6 +56,10 @@ jobs:
 #           ./create-elk-secret.sh monitoring
     
     # Create imagepullsecret for Azure Container registry (ACR)
+
+    ##########
+    #Probably do not need ElasticSearch in this artifactory thing
+    #########
     - name: set imagePullSecret
       run: |    
         helm template -n ${{ env.NAMESPACE }} \

@@ -1,5 +1,8 @@
 STEP 4
 
+Should be able to be called on command. Will scan entire repo(?) and output to json list of bad images? 
+
+
 Not sure how to get this running / scan for vulnerable images (xray?)
 Then would need to get information on who is using that image and then sending some notif?
 

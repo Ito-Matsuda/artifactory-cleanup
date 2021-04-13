@@ -7,3 +7,5 @@ Even then we would need to migrate that user's image to an upgraded image (need 
 
 
 Hopefully, we can use this in combination with the getting of the `manifest.json`'s older than X period. 
+
+# Note

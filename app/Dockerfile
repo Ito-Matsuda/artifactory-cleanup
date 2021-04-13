@@ -8,7 +8,7 @@ RUN apt-get update -y \
 RUN ln -s /usr/bin/pip3 /usr/bin/pip \
     && pip install --upgrade pip
 
-#Pretty sure I need kubectl here. 
+#Pretty sure I need kubectl here (need to use to query all images in use). 
 ARG KUBECTL_VERSION=v1.15.10
 ARG KUBECTL_URL=https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl
 ARG KUBECTL_SHA=38a0f73464f1c39ca383fd43196f84bdbe6e553fe3e677b6e7012ef7ad5eaf2b

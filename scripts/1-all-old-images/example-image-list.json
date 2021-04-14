@@ -1,84 +1,22 @@
-// Compare the contents of artifacts in 2 "maven+example" builds 
-// https://www.jfrog.com/confluence/display/JFROG/Artifactory+Query+Language
-// Commenting for history's sake 
-/*
-items.find(
-    {
-        "name":{"$match":"multi2*.jar"},
-        "$or":[
-            {
-                "$and":[
-                    {"artifact.module.build.name":{"$eq":"maven+example"}},
-                    {"artifact.module.build.number":{"$eq":"317"}}
-                 ]
-            },
-            {
-                "$and":[
-                    {"artifact.module.build.name":{"$eq":"maven+example"}},
-                    {"artifact.module.build.number":{"$eq":"318"}}
-                 ]
-            }
-          ]
-}).include("archive.entry")
-*/
 {
     "results": [
         {
-            "repo": "ext-snapshot-local",
-            "path": "org/jfrog/test/multi2/3.0.0-SNAPSHOT",
-            "name": "multi2-3.0.0-20151012.205507-1.jar",
+            "repo": "docker-remote-repo-cache",
+            "path": "alpine/latest",
+            "name": "manifest.json",
             "type": "file",
-            "size": 1015,
-            "created": "2015-10-12T22:55:23.022+02:00",
+            "size": 528,
+            "created": "2021-03-21T13:54:52.383+02:00",
             "created_by": "admin",
-            "modified": "2015-10-12T22:55:23.013+02:00",
+            "modified": "2021-03-21T13:54:32.000+02:00",
             "modified_by": "admin",
-            "updated": "2015-10-12T22:55:23.013+02:00",
-            "archives": [
-                {
-                    "entries": [
-                        {
-                            "entry.name": "App.class",
-                            "entry.path": "artifactory/test"
-                        },
-                        {
-                            "entry.name": "MANIFEST.MF",
-                            "entry.path": "META-INF"
-                        }
-                    ]
-                }
-            ]
+            "updated": "2021-03-21T13:54:52.384+02:00"
         },
-        {
-            "repo": "ext-snapshot-local",
-            "path": "org/jfrog/test/multi2/3.0.0-SNAPSHOT",
-            "name": "multi2-3.0.0-20151013.074226-2.jar",
-            "type": "file",
-            "size": 1015,
-            "created": "2015-10-13T09:42:39.389+02:00",
-            "created_by": "admin",
-            "modified": "2015-10-13T09:42:39.383+02:00",
-            "modified_by": "admin",
-            "updated": "2015-10-13T09:42:39.383+02:00",
-            "archives": [
-                {
-                    "entries": [
-                        {
-                            "entry.name": "App.class",
-                            "entry.path": "artifactory/test"
-                        },
-                        {
-                            "entry.name": "MANIFEST.MF",
-                            "entry.path": "META-INF"
-                        }
-                    ]
-                }
-            ]
-        }
+    ...
     ],
     "range": {
         "start_pos": 0,
-        "end_pos": 2,
-        "total": 2
+        "end_pos": 12,
+        "total": 12
     }
 }

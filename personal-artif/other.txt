@@ -1,0 +1,1 @@
+items.find({"repo": "my-docker-image"})

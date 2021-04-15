@@ -1,14 +1,15 @@
 #!/bin/sh
 
-# I don't have much idea here aside from the kubectl run.
-# Where will this run???
-
 #Example (on personal work linux where i have kubectl set up)
-kubectl get pods --namespace jose-matsuda -o jsonpath="{.items[*].spec.containers[*].image}" >> keep-images.json
-#produces something like (i formatted to keep nice, is normally on one line)
-#k[redacted?]r.azurecr.io/jupyterlab-cpu:dee04931 
+# (the tr-s ... makes each image appear on their own line) 
+kubectl get pods --namespace jose-matsuda -o jsonpath="{.items[*].spec.containers[*].image}" | tr -s '[[:space:]]' '\n'> keep-images.json
+#produces something like 
+# repo / path1:path2 --> path1 is a folder containing path2 which itself is a folder holding the manifest + layers.  
+
 #docker.io/istio/proxyv2:1.5.10 
+#repo/path
 #vault:1.5.5 
+#/path???
 #gcr.io/ml-pipeline/frontend:1.0.4 
 #docker.io/istio/proxyv2:1.5.10 
 #gcr.io/ml-pipeline/visualization-server:1.0.4 
@@ -17,7 +18,12 @@ kubectl get pods --namespace jose-matsuda -o jsonpath="{.items[*].spec.container
 #docker.io/istio/proxyv2:1.5.10 
 #vault:1.5.5
 
-#Should eventually be (with permissions)
-#kubectl get pods --all-namespaces -o jsonpath="{.items[*].spec.containers[*].image}"
 
-#If i could get these images to match up with their respective manifest id in artifactory that would be ACE
+
+#Should eventually be (with permissions)
+#kubectl get pods --all-namespaces -o jsonpath="{.items[*].spec.containers[*].image} tr -s '[[:space:]]' '\n'> keep-images.json"
+
+#The forwardslashes indicates the "repo", the bit after the final (or is it still the first?)f'slash indicates the path
+#The bit after the colon `:` indicates the 'tag' of the image, and that is used to sort into folders in artifactory
+#There are the istio / vault ones that I am unsure about. I would imagine I don't mess with these anyways so as long as
+# they do NOT get caught by deletion it should be fine 

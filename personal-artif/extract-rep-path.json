@@ -1,8 +1,0 @@
-{"repo":"docker-quickstart-local","path":"hello-world/latest"}
-{"repo":"docker-quickstart-local","path":"my-docker-image/1reusedlayer"}
-{"repo":"docker-quickstart-local","path":"my-docker-image/5eefshacode"}
-{"repo":"docker-quickstart-local","path":"my-docker-image/delete1"}
-{"repo":"docker-quickstart-local","path":"my-docker-image/delete2"}
-{"repo":"docker-quickstart-local","path":"my-docker-image/latest"}
-{"repo":"docker-quickstart-local","path":"my-docker-image/newlayer"}
-{"repo":"docker-quickstart-remote-cache","path":"library/ubuntu/sha256__8cfb8f14fbeb9d44174209ccda485e0bfacc910d5624faac8cc876f5c1376781"}

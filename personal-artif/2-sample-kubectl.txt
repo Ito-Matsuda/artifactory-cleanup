@@ -1,0 +1,10 @@
+Sample of what is returned by kubectl These are KEPT (aka not removed / kept in list )
+docker.io/istio/proxyv2/1.5.10 
+kr.azurecr.io/jupyterlab-cpu/dee04931 
+docker-quickstart-local/my-docker-image/delete
+docker-quickstart-local/my-docker-image/newlayer
+docker-quickstart-local/my-docker-image/latest
+docker-quickstart-local/my-docker-image/delete1
+docker-quickstart-local/hello-world/latest
+docker-quickstart-local/my-docker-image/1reusedlayer
+docker-quickstart-local/my-docker-image/5eefshacode

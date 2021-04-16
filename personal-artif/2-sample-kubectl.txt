@@ -8,3 +8,4 @@ docker-quickstart-local/my-docker-image/delete1
 docker-quickstart-local/hello-world/latest
 docker-quickstart-local/my-docker-image/1reusedlayer
 docker-quickstart-local/my-docker-image/5eefshacode
+docker-quickstart-remote-cache/library/ubuntu/sha256__8cfb8f14fbeb9d44174209ccda485e0bfacc910d5624faac8cc876f5c1376781

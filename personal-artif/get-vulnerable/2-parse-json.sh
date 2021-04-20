@@ -7,4 +7,5 @@
 
 cat 1-violations.json |  jq -c '.violations[].impacted_artifacts[]' | sort | uniq >> 2-impacted_artifacts.txt
 
+sed -i 's/\"//g' 2-impacted_artifacts.txt
 #where is this default from?

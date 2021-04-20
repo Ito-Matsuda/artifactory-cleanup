@@ -5,6 +5,6 @@
 # impacted artifacts itself is encased in '[]' and could have multiple in it.
 # see:https://www.jfrog.com/confluence/display/JFROG/Xray+REST+API#XrayRESTAPI-GetViolations
 
-cat example-violations.json |  jq -c '.violations[].impacted_artifacts[]' >> 2-impacted_artifacts.txt
+cat 1-violations.json |  jq -c '.violations[].impacted_artifacts[]' | sort | uniq >> 2-impacted_artifacts.txt
 
 #where is this default from?

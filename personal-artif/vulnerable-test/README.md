@@ -5,3 +5,5 @@ https://www.jfrog.com/confluence/display/JFROG/Xray+REST+API#XrayRESTAPI-GetViol
 *Im going to assume that the pagination part is optional
 
 curl -u myuser:... -X POST $URL -H "Content-Type: application/json" -d @violationscheck.json >> vulnerabilities.json
+
+cat example-violations.json |  jq -c '.violations[].impacted_artifacts[]' >> 2-impacted_artifacts.txt

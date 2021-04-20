@@ -1,0 +1,6 @@
+"arti1/libs-release-local/jfrog-artifactory-pro-5.9.0.zip"
+"arti1/generic-local/jfrog-artifactory-pro-5.9.0.zip"
+"arti1/libs-release-local/jfrog-artifactory-check-pro-5.9.0.zip"
+"arti1/libs-release-local/jfrog-artifactory-pro-5.9.0.zip"
+"arti1/generic-local/jfrog-artifactory-pro-5.9.0.zip"
+"arti1/libs-release-local/jfrog-artifactory-check-pro-5.9.0.zip"

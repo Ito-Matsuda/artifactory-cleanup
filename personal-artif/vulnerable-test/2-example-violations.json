@@ -1,0 +1,36 @@
+{
+    "total_violations": 295,
+    "violations": [{
+            "description": "Amazon Digital Services License",
+            "severity": "High",
+            "type": "License",
+            "infected_component": ["generic://sha256:72daef35b54f95a97e7da5ae2dd7cccecc71183788656083f35fdf6e0ca5a24f/opkg-4.3.54.jar"],
+            "created": "2018-05-29T17:30:49+03:00",
+            "watch_name": "watch_license",
+            "issue_id": "ADSL",
+            "violation_details_url": "localhost:8000/api/v1/violations?watch_id=5b163b41ab1bdddbb2e16492&issue_id=XRAY-60763",
+   "impacted_artifacts": [
+        "arti1/libs-release-local/jfrog-artifactory-pro-5.9.0.zip",
+        "arti1/generic-local/jfrog-artifactory-pro-5.9.0.zip",
+        "arti1/libs-release-local/jfrog-artifactory-check-pro-5.9.0.zip"
+    ]
+        },
+        {
+            "description": "If a user of Commons-Email (typically an application programmer) passes unvalidated input as the so-called \"Bounce Address\", and that input contains line-breaks, then the email details (recipients, contents, etc.) might be manipulated.",
+            "severity": "Low",
+            "type": "Security",
+            "infected_component": [
+                "gav://org.apache.commons:commons-email:1.1"
+            ],
+            "created": "2018-06-06T12:21:18+03:00",
+            "watch_name": "all",
+            "issue_id": "XRAY-60829",
+            "violation_details_url": "localhost:8000/api/v1/violations?watch_id=5b163b41ab1bdddbb2e16492&issue_id=XRAY-60829",
+   "impacted_artifacts": [
+        "arti1/libs-release-local/jfrog-artifactory-pro-5.9.0.zip",
+        "arti1/generic-local/jfrog-artifactory-pro-5.9.0.zip",
+        "arti1/libs-release-local/jfrog-artifactory-check-pro-5.9.0.zip"
+    ]
+        }
+    ]
+}

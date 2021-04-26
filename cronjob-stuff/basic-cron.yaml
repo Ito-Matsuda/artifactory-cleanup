@@ -1,0 +1,23 @@
+#apiver,kind,metadata required
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: test
+
+#spec section required. 
+spec:
+# runs this job every 5 mins. use crontabguru
+  schedule: "*/5 * * * *"
+  jobTemplate: #this spec.jobtemplate is required
+  #same schema as a job. but no apivers or kind
+    spec:
+      template: #required, this is the beginning of a pod template
+        spec:
+          containers:
+            - name: hello
+              image: bash
+              command: ["echo",  "Hello world"]
+          restartPolicy: OnFailure
+
+
+# apply with kubectl apply -f basic-cron.yaml

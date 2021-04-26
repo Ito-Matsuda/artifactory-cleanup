@@ -14,3 +14,9 @@ sed -i "s/:/\//" keep-images.txt
 #The bit after the colon `:` indicates the 'tag' of the image, and that is used to sort into folders in artifactory
 #There are the istio / vault ones that I am unsure about. I would imagine I don't mess with these anyways so as long as
 # they do NOT get caught by deletion it should be fine.
+
+
+#Might instead want to do 
+kubectl get pods --namespace jose-matsuda -o json | jq -c '.items[] | {data:"\(.metadata.namespace)+\(.spec.containers[].image"}' | sort | uniq > keep-images.txt
+#produces something like so now we have the namespace as well. 
+# {"data":"jose-matsuda+k8s....azurecr.io/jupyterlab-cpu:deeeeeeee"}

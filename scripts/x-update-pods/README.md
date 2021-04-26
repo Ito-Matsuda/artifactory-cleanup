@@ -1,3 +1,36 @@
+# For updating 
+
+Do something like below instead
+
+`kubectl set image pod/kubernetes-bootcamp-fb5c67579-5l2b5 kubernetes-bootcamp=jocatalin/kubernetes-bootcamp:v2 --namespace default`
+
+https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-interactive/
+
+https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment
+If a change is made to .spec.template then a rollout is done
+
+So to do the above I need the following; `kubectl set image pod/podName containerName=updatedImage --namespace userNamespace`
+
+podName: (likely what the user named their notebook server + 0 ex: test-french-0), 
+
+containerName: (whatever the user named their notebook server ex: test-franch)
+
+updatedImage: the image to update to (may require some messing around if the name doesnt match)
+
+userNamespace: which namespace to use, since pod/containernames can be shared in different pods (Saffa and I both had a test-french)
+
+
+
+# Not sure if "patching" is what we want
+ https://kubernetes.io/docs/reference/kubectl/cheatsheet/#patching-resources
+
+ and
+
+ https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#patch
+
+# OLD THOUGHTS BELOW
+
+
 ROLLING RESTART?
 
 https://github.com/kubernetes/kubernetes/issues/13488#issuecomment-691916143

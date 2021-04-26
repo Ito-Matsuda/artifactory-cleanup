@@ -15,7 +15,16 @@ done
 #Remove quotes from 2-artif (for easy comparison with kubectl)
 sed -i 's/\"//g' 2-artif.txt
 
-#Example of output from kubectl --> k[redacted?]r.azurecr.io/jupyterlab-cpu:dee04931 
-# kubectl get pods --namespace jose-matsuda -o jsonpath="{.items[*].spec.containers[*].image}" | tr -s '[[:space:]]' '\n' | sort | uniq > keep-images.txt
+#Example of output from kubectl --> k[redacted?]r.azurecr.io/jupyterlab-cpu:dee04931  
+#kubectl get pods --namespace jose-matsuda -o json | jq -c '.items[] | {data:"\(.metadata.namespace)+\(.spec.containers[].image)"}' | sort | uniq > keep-images.txt
+#should the '.spec.containers[].image' instead be '.spec.containers[0].image'??? this avoids the istio and vault images
+#   may want spec containers name as well (to be able to update pods)
+# that also appear in the pod spec which we don't want to replace? 
+#how is our pod(?) spec created? Is it like the image they choose first will always be the first image? 
+#produces something like so now we have the namespace as well. 
+# {"data":"jose-matsuda+k8s....azurecr.io/jupyterlab-cpu:deeeeeeee"}
+# might also need spec.containers[].name
+#this step may now change... branch into two different forms? 
+
 # Replace the ":" with a /
 sed -i "s/:/\//" 2-sample-kubectl.txt

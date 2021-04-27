@@ -1,0 +1,1 @@
+docker-quickstart-local/my-docker-image/delete1

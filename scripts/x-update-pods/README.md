@@ -1,6 +1,15 @@
 # For updating 
+ACTUALLY NEED TO UPDATE THE NOTEBOOK IMAGE
 
-Do something like below instead
+command that works
+
+kubectl patch Notebook notebookName --type='json' -p='[{"op": "replace", "path": "/spec/template/spec/containers/0/image", "value":"NEWIMAGE"}]'
+
+So I need
+Image to update to (this will be more complicated)
+notebook name (.metadata.namespace)
+
+
 
 `kubectl set image pod/kubernetes-bootcamp-fb5c67579-5l2b5 kubernetes-bootcamp=jocatalin/kubernetes-bootcamp:v2 --namespace default`
 
@@ -11,13 +20,13 @@ If a change is made to .spec.template then a rollout is done
 
 So to do the above I need the following; `kubectl set image pod/podName containerName=updatedImage --namespace userNamespace`
 
-podName: (likely what the user named their notebook server + 0 ex: test-french-0), 
+podName: (likely what the user named their notebook server + 0 ex: test-french-0), --> .metadata.name
 
-containerName: (whatever the user named their notebook server ex: test-franch)
+containerName: (whatever the user named their notebook server ex: test-franch) --> .spec.containers[0].image -->maybe 0 so we dont get vault / istio
 
-updatedImage: the image to update to (may require some messing around if the name doesnt match)
+updatedImage: the image to update to (may require some messing around if the name doesnt match) --> unsure
 
-userNamespace: which namespace to use, since pod/containernames can be shared in different pods (Saffa and I both had a test-french)
+userNamespace: which namespace to use, since pod/containernames can be shared in different pods (Saffa and I both had a test-french) -->.metadata.namespace
 
 
 

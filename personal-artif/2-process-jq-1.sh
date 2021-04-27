@@ -15,7 +15,8 @@ done
 #Remove quotes from 2-artif (for easy comparison with kubectl)
 sed -i 's/\"//g' 2-artif.txt
 
-#Example of output from kubectl --> k[redacted?]r.azurecr.io/jupyterlab-cpu:dee04931  
+#Example of output from kubectl 
+# kubectl get pods --namespace jose-matsuda -o json | jq -c '.items[] | {Namespace:(.metadata.namespace), RepoPath:(.spec.containers[0].image), ContName:(.spec.containers[0].name), PodName:(.metadata.name)}' | sort | uniq
 #kubectl get pods --namespace jose-matsuda -o json | jq -c '.items[] | {data:"\(.metadata.namespace)+\(.spec.containers[].image)"}' | sort | uniq > keep-images.txt
 #should the '.spec.containers[].image' instead be '.spec.containers[0].image'??? this avoids the istio and vault images
 #   may want spec containers name as well (to be able to update pods)
@@ -25,6 +26,10 @@ sed -i 's/\"//g' 2-artif.txt
 # {"data":"jose-matsuda+k8s....azurecr.io/jupyterlab-cpu:deeeeeeee"}
 # might also need spec.containers[].name
 #this step may now change... branch into two different forms? 
+
+#kubectl get notebooks --namespace jose-matsuda --> A LOT CLEANER
+#kubectl get notebook --namespace jose-matsuda -o json | jq -c '.items[] | {Namespace:(.metadata.namespace), ImagePath:(.spec.template.spec.containers[0].image), ContName:(.spec.template.spec.containers[0].name)}' | sort | uniq > 2-completelist.txt
+
 
 # Replace the ":" with a /
 sed -i "s/:/\//" 2-sample-kubectl.txt

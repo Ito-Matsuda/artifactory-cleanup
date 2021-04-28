@@ -1,1 +1,1 @@
-items.find({"name":{"$eq":"manifest.json"}})
+items.find({"name":{"$eq":"manifest.json"},"created":{"$before":"1w"}})

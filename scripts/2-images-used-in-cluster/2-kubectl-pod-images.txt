@@ -1,0 +1,6 @@
+docker.io/istio/proxyv2/1.5.10
+gcr.io/ml-pipeline/frontend/1.0.4
+gcr.io/ml-pipeline/visualization-server/1.0.4
+docker-quickstart-local/my-docker-image/delete2
+vault/1.5.5
+docker-quickstart-local/my-docker-image/latest

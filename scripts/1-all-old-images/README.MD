@@ -1,4 +1,20 @@
-STEP 1 
+STEP 1: Obtain list of images older than X Period of time
+
+# Output
+
+1-image-list -> Final Output (1/1): A list from artifactory containing images older than the period specified in `old-images-request.txt` 
+
+## IMPORTANT
+
+Currently it looks for images that have not been downloaded in the last 4 weeks. If we want created date go with 
+
+`items.find({"name":{"$eq":"manifest.json"},"created":{"$before":"1w"}})`
+
+https://www.jfrog.com/confluence/display/RTF3X/Artifactory+Query+Language
+
+
+
+# Old Notes / Ramblings
 
 Get list of all manifests older than X period of time. 
 Note that it has to be *manifests* (do not search by name) to entirely delete it. 

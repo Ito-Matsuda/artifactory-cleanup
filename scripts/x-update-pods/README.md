@@ -1,3 +1,9 @@
+# CONCERNS
+What if image name changes?
+How will I do a best fit kind of image change / just the most recent one?
+If there's no suitable image DO NOT DELETE the image, send an email perhaps.
+You do NOT want to auto-update the other images. 
+
 # For updating 
 ACTUALLY NEED TO UPDATE THE NOTEBOOK IMAGE
 

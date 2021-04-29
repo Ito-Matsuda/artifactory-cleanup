@@ -1,3 +1,7 @@
+Step X: Forcibly update notebooks that were not actioned on. 
+
+
+
 # CONCERNS
 What if image name changes?
 How will I do a best fit kind of image change / just the most recent one?

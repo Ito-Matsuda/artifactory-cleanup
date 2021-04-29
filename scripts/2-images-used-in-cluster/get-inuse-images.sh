@@ -21,6 +21,8 @@ done
 # Replace any : with / for easy comparison with artifactory
 sed -i "s/:/\//" 2-notebook-images.txt
 
+# Now get ALL IMAGES
+
 # Compile a list of ALL images and paths. These will NOT be automatically updated but will need to let an admin know about them
 # Perhaps can do a comparison with the list above (notebook images) and uniq'd so that the admin is not notified on user notebook images
 # would uncomment below

@@ -1,4 +1,19 @@
-STEP 3
+STEP 3: Make a list of images to delete
+
+# Input 
+
+1-image-list -> From step 1, images older than X period of time
+
+2-kubectl-pod-images -> From step 2, all images in use in the cluster
+
+# Output
+
+3-to-delete -> A list of images that are X period of time old that are NOT being used in the cluster.
+
+This list would be a list of images that we can safely delete since they are unused and old.
+
+
+# Old Notes / Ramblings
 
 Create a json of `images-to-delete` whose contents are from `image-list.json` minus `keep-images.json`.
 Where again hopefully the `path` from `image-list.json` will match up nicecly with the names provided by `keep-images.json`(kubectl)

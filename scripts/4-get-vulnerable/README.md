@@ -1,5 +1,17 @@
-STEP 4
+STEP 4: Get list of images that are in violation.
 
+# Input
+
+4-violationscheck.json: The JSON file we send to artifactory xray to filter on what severity we are searching for. This currently looks for artifacts that have a 'critical' vulnerability (may need to change filter / this file).
+
+# Output
+
+4-violations.json: The result of using 4-violationscheck.json. Difficult to use so we parse it into the next output file
+
+X-impacted-artifacts.txt: Parsed list of the images (their paths) that are afflicted with a Critical vulnerability
+
+
+# Old thoughts / Ramblings
 Should be able to be called on command. Will scan entire repo(?) and output to json list of bad images? 
 
 

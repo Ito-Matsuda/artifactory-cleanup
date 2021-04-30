@@ -18,8 +18,8 @@ do
   echo $line | jq '.ImagePath' | tr -d '"' >> 2-notebook-images.txt #for now a dummy list
 done
 
-# Replace any : with / for easy comparison with artifactory
-sed -i "s/:/\//" 2-notebook-images.txt
+# Replace any : with / for easy comparison with artifactory. Only do this when you need to do it. 
+#sed -i "s/:/\//" 2-notebook-images.txt
 
 # Now get ALL IMAGES
 
@@ -29,6 +29,7 @@ sed -i "s/:/\//" 2-notebook-images.txt
 # kubectl get pods --namespace jose-matsuda -o jsonpath="{.items[*].spec.containers[*].image}" | tr -s '[[:space:]]' '\n' | sort | uniq >> 2-kubectl-pod-images.txt
 
 # Replace any : with / for easy comparison with artifactory
+# Keep this uncommented as it is used in Step 3 for an 'ultimate' do not delete these images. 
 sed -i "s/:/\//" 2-kubectl-pod-images.txt
 
 # Remove any images used in notebooks found from the get pods

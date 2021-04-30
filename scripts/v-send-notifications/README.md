@@ -4,7 +4,7 @@ Maybe use a python script?
 
 # Input
 
-A) X-impacted-artifacts.txt: Parsed list of the images (their paths) that are afflicted with a Critical vulnerability. (still need to figure this 'default' thing out)
+A) 4C-formatted-impacted-artifacts.txt: Parsed list of the images (their paths) that are afflicted with a Critical vulnerability. (still need to figure this 'default' thing out)
 
 B) 2-kubectl-notebook.txt: From step 2, each _line_ is valid json containing the image name, notebook and namespace. 
 

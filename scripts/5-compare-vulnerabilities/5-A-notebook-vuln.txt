@@ -1,2 +1,0 @@
-docker-quickstart-local/my-docker-image/latest
-docker-quickstart-local/my-docker-image/newlayer

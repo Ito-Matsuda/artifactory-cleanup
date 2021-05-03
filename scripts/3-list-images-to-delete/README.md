@@ -2,15 +2,15 @@ STEP 3: Make a list of images to delete
 
 # Input 
 
-1-image-list -> From step 1, images older than X period of time
+1-old-image-list -> From step 1, images older than X period of time
 
-2-kubectl-pod-images -> From step 2, all images in use in the cluster
+2-kubectl-pod-images -> From step 2, ALL images (including notebook) in use in the cluster
 
 # Output
 
 3-to-delete -> A list of images that are X period of time old that are NOT being used in the cluster.
 
-This list would be a list of images that we can safely delete since they are unused and old.
+This list would be a list of images that we can safely delete since they are unused and old. That's it for this step.
 
 
 # Old Notes / Ramblings

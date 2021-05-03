@@ -11,5 +11,5 @@ curl -u myUser:<Token> -X POST $URL -H "content-type: text/plain" -d @old-images
 cat artifactory-get.json | jq -c '.results[] | {completepath: "\(.repo)/\(.path)"}' |
 while read -r line
 do
-  echo $line | jq '.[]' |  tr -d '"' >> 1-image-list.txt
+  echo $line | jq '.[]' |  tr -d '"' >> 1-old-image-list.txt
 done 

@@ -1,15 +1,30 @@
 #!/bin/sh
 
 #####################################################################################################################
-# VULNERABILITIES FOR USER
+# USER/ADMIN SHARED FORMATTING 
+# Avoid any escaping problems by going from `\` --> `;`
+sed -i 's/\//;/g' 4C-formatted-impacted-artifacts.txt 
+sed -i 's/\//;/g' 2-notebook-images.txt
 #####################################################################################################################
 
-# Step 1 Get the intersection of the two files. 
-# Might want to change this to look at the get-notebook and then make the change in the JSON to make it easy 
-# to use down the line (less file comparisons just to find where is where)
-#awk 'NR==FNR{arr[$0];next} $0 in arr' 4C-formatted-impacted-artifacts.txt 2-notebook-a.txt >> 5-A-notebook-vuln.txt
 
+#####################################################################################################################
+# VULNERABILITIES FOR USER
+# Returns a user-items.txt containing impacted images.
+#####################################################################################################################
 
+# Avoid escaping problems and match up to impacted artifacts
+sed 's/\//;/g' 2-kubectl-notebook.txt |
+while read -r line
+do
+  # extract the image from the file, trim the quotes, and replace the : with a ;
+  imageCheck=$(echo $line | jq -c '.ImagePath' | tr -d '"' | sed 's/:/;/g')
+  # Look for the image in the imapacted artifacts and if found print the line to the list. 
+  if grep -Fxq "$imageCheck" 4C-formatted-impacted-artifacts.txt 
+  then
+     echo $line >> user-items.txt
+  fi
+done
 
 #####################################################################################################################
 # VULNERABILITIES FOR ADMIN
@@ -32,7 +47,7 @@ sed -i 's/\//;/g' 5-kubectl-pods.txt
 
 #Take out images used in notebooks (since there may be many in use) 
 # Change to semicolon to prevent escaping in the 'sed'
-sed 's/\//;/g' 2-notebook-images.txt | 
+cat 2-notebook-images.txt | 
 while read -r line
 do
   sed -i "/$line/d" 5-kubectl-pods.txt
@@ -42,8 +57,6 @@ done
 
 #Now do a comparison w/ 4C-formatted-impacted-artifacts.txt
 # We want to keep in 5-kubectl-pods.txt what is in 4C. So remove anything not in 4C
-#SED to / to ; for easy pattern matching
-sed -i 's/\//;/g' 4C-formatted-impacted-artifacts.txt 
 
 cat 5-kubectl-pods.txt | 
 while read -r line
@@ -58,7 +71,13 @@ do
 done 
 
 # Need to do add back in the images used in notebooks (but just one of them each. don't have tens of jupyterlab-cpu if it's the same image)
-cat 5-A-notebook-vuln.txt | sort | uniq | 
+cat user-items.txt | 
+while read -r line
+do
+  echo $line | jq -c '.ImagePath'| tr -d '"' | sed 's/:/;/g' >> user-items-image-list.txt
+done
+
+cat user-items-image-list.txt | sort | uniq |
 while read -r line
 do
    #Not-applicable as the notebook image (ex: jupyterlab-cpu) may be used in many notebooks across the cluster

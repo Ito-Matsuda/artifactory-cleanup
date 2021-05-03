@@ -1,0 +1,2 @@
+{"Namespace":"jose-matsuda","ImagePath":"...azurecr.io;jupyterlab-cpu:dee04..1","Name":"doubletestcheck"}
+{"Namespace":"jose-matsuda","ImagePath":"...azurecr.io;jupyterlab-cpu:dee04..1","Name":"changeimage"}

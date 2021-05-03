@@ -1,5 +1,5 @@
-...azurecr.io/jupyterlab-cpu:dee04..1
-...azurecr.io/jupyterlab-cpu:dee04..1
-...azurecr.io/jupyterlab-cpu:asd..1
-docker-quickstart-local/my-docker-image:latest
-docker-quickstart-local/my-docker-image:newlayer
+...azurecr.io;jupyterlab-cpu:dee04..1
+...azurecr.io;jupyterlab-cpu:dee04..1
+...azurecr.io;jupyterlab-cpu:asd..1
+docker-quickstart-local;my-docker-image:latest
+docker-quickstart-local;my-docker-image:newlayer

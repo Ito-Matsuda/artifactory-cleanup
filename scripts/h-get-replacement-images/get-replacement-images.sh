@@ -19,3 +19,5 @@ while read -r line
 do
   echo $line | jq '.[]' |  tr -d '"' >> h-new-image-list.txt
 done 
+
+# Should include something to catch if a suitable replacement image is not found then mention in an email yada yada. 

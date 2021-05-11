@@ -4,26 +4,11 @@ Maybe use a python script?
 
 # Input
 
-A) 4C-formatted-impacted-artifacts.txt: Parsed list of the images (their paths) that are afflicted with a Critical vulnerability. (still need to figure this 'default' thing out)
-
-B) 2-kubectl-notebook.txt: From step 2, each _line_ is valid json containing the image name, notebook and namespace. 
-
-C) 2-used-non-notebook-images.txt: From step 2. These are images used in the cluster but not attached to a notebook.
-
-X) Some list that needs to get the 'updated' versions of the image, how we match on this I am undecided on.
-Would I need to know things / separate based on the slashes? Ex) docker-quickstart-local/my-docker-image/latest 
-I would need a query (to artifactory) to get younger images for sure. 
+A) admin-items: from step 5 just send this list to the admin. Has information on what containers, what images, and what namespace the vulnerability is found in.
 
 # Operations
 
 In no particular order
-
-## Notify the Admin of images in cluster with vulnerabilities
-
-I) Get the intersection of A and C and produce a new list "affected-in-cluster"
-
-II) Using a master admin email (or even slack notification) send them a message containing the contents of "affected-in-cluster"
-letting them know that these deployed images are vulnerable
 
 ## Notify Users of their vulnerable notebooks. NEED TO FIND OUT HOW TO GET USER EMAILS STILL! 
 
@@ -36,3 +21,27 @@ III) Send them an email containing information on how to update their image and 
 
 # Output
 
+
+# Sample Email Text
+
+## Generic ADMIN vulnerability notice email
+Hello, this is an email to inform you that the following list of images have been found to contain critical vulnerabilities. 
+
+~display info here
+
+## Generic USER vulnerability notice email.
+Hello, this is an email to inform you that a notebook server of yours has been found to contain a critical vulnerability.
+You will need to update your notebook server `name here` to a newer version.
+To do this you do `command here should include which image to update to` 
+Please note that during the update any running processes will stop and would need to be restarted.  
+
+Please update your notebook by the end of X or else it will be automatically updated and restarted. 
+
+If you have any questions feel free to contact `person` here
+
+## Generic USER vulnerability notice email part two (but no image to update to) 
+Hello, this is an email to inform you that a notebook server of yours has been found to contain a critical vulnerability.
+You will need to update your notebook server `name here` to a newer version. However our system has not found a suitable image to update to.
+This could be because of an image change or a fix has not yet been deployed. Please be patient and you will get another email once a suitable image has been found and will tell you how to update.
+
+- Is this even wanted? Should we let them know or just keep it under wraps if there's no suitable next image to update to.

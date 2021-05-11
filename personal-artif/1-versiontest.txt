@@ -1,0 +1,1 @@
+items.find({"name":{"$eq":"manifest.json"},"@docker.label.version":{"$gt":"1.5.1"}, "path":{"$match":"my-docker-image/*"}})

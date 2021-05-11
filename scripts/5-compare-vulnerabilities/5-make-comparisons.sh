@@ -32,7 +32,7 @@ done
 #####################################################################################################################
 
 # Step X get a list of affected pods in the cluster. 
-# Having said that I wouldn't want to be an admin recieving a ton of emails about some istio / vault vulnerability (these are in each notebook server)
+# Having said that I wouldn't want to be an admin recieving a ton of the same info about some istio / vault vulnerability (these are in each notebook server)
 
 #Declare Variables that indicate that an image is vulnerable. These will be for the other images inside the notebook (not the jupyterlab etc)
 # or are shared across many pods so as to not flood the admin with notifications. 

@@ -1,5 +1,7 @@
 Step X: Forcibly update notebooks that were not actioned on. 
 
+# INPUT
+user-items.txt: A list containing all the vulnerable images from notebook servers with namespace and notebook name
 
 
 # CONCERNS

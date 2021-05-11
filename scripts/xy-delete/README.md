@@ -2,6 +2,10 @@
 
 Not too sure on where to place this one in the process just yet. For now I'll have it be one of the last steps. Should at least be after the update-pods. 
 
+Could get called by 3-images to delete once (as these would be unused and old) and then again after the update. 
+
+DO NOT DELETE IMAGES THAT HAVE DO NOT HAVE A SUITABLE IMAGE TO UPDATE TO.
+
 # Input
 
 3-to-delete.txt: A list of images to delete. These images are the old and unused images. 

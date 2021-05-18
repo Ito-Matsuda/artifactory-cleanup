@@ -1,1 +1,1 @@
-items.find({"name":{"$eq":"manifest.json"},"@docker.label.description":{"$eq":"something"}})
+items.find({"name":{"$eq":"manifest.json"},"created":{"$before":"4w"},"stat.downloaded":{"$before":"5w"}})

@@ -1,0 +1,21 @@
+#apiver,kind,metadata required
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: test
+
+#spec section required. 
+spec:
+# every day at 4AM
+  schedule: "0 4 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: artifactory-cluster-cleanup
+              image: nameOfDockerfileHere
+              command: ["run-job.sh"] #dont know if I need this. if the dockerfile already uses it as the entrance. 
+
+
+# apply with kubectl apply -f basic-cron.yaml

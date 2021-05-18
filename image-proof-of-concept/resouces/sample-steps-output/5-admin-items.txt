@@ -1,0 +1,3 @@
+{"Namespace":"jose-matsuda","Image":"docker-quickstart-local;my-docker-image:latest","Name":"otherpodname"}
+{"Namespace":"jose-matsuda","Image":"docker-quickstart-local;my-docker-image:5eefshacode","Name":"otherpodname"}
+{"Namespace":"not-applicable","Image":"...azurecr.io;jupyterlab-cpu;dee04..1","Name":"not-applicable"}

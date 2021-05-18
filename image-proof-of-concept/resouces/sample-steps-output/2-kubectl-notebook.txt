@@ -1,0 +1,3 @@
+{"Namespace":"jose-matsuda","ImagePath":"...azurecr.io/jupyterlab-cpu:dee04..1","Name":"doubletestcheck","Version":"1.0.0"}
+{"Namespace":"jose-matsuda","ImagePath":"...azurecr.io/jupyterlab-cpu:dee04..1","Name":"changeimage","Version":"1.0.0"}
+{"Namespace":"jose-matsuda","ImagePath":"...azurecr.io/jupyterlab-cpu:asd..1","Name":"changeimage","Version":"1.0.0"}

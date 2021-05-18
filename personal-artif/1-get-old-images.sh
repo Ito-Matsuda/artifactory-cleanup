@@ -4,6 +4,7 @@ URL="https://testjosez.jfrog.io/artifactory/api/search/aql"
 #changed for testing to find things older than 1 week
 curl -u myuser:red! -X POST $URL -H "content-type: text/plain" -d @1-aql-get-images.txt >> 1-image-list.json 
 #items.find({"name":{"$eq":"manifest.json"},"created":{"$before":"1w"}})
+#items.find({"name":{"$eq":"manifest.json"},"@docker.label.description":{"$eq":"something"}})
 #https://stackoverflow.com/questions/32277479/how-to-get-properties-of-an-artifact-in-artifactory 
 
 #Semantic versioning test  is 1-i.json

@@ -7,6 +7,7 @@
 # Name:(.spec.template.spec.containers[0].name), Version: (.metadata.labels.version)}' | sort | uniq > 2-kubectl-notebook.txt
 
 # Compile a list of JUST images and paths, trimming quotes. 
+# This may not be super useful anymore. I dont remember the purpose of 2-notebook-images and its not obvious
 cat 2-kubectl-notebook.txt | 
 while read -r line
 do

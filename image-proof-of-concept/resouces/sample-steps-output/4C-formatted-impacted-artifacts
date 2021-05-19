@@ -7,3 +7,4 @@ docker-quickstart-local/my-docker-image/latest
 docker-quickstart-local/my-docker-image/newlayer
 docker-quickstart-remote-cache/library/ubuntu/sha256__8cfb8f14fbeb9d44174209ccda485e0bfacc910d5624faac8cc876f5c1376781
 ...azurecr.io;jupyterlab-cpu;dee04..1
+k8scc01covidacr.azurecr.io;jupyterlab-cpu;f25cad42

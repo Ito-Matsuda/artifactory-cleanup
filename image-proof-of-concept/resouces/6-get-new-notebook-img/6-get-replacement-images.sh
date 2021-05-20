@@ -6,6 +6,7 @@
 #Testing grounds delete these later/ just a cleanup
 rm 6-sanctified-images.txt
 rm 6-spawnerfile.yaml
+# rm 6-replacement-images.txt
 # End testing grounds
 
 curl -o 6-spawnerfile.yaml https://raw.githubusercontent.com/StatCan/kubeflow-manifest/master/kustomize/application/jupyter-web-app/configs/spawner_ui_config.yaml
@@ -28,13 +29,11 @@ cat 5-user-items.txt |
 while read -r line
 do
   #First things first I need just the ImagePath
-  echo $line
   imagepath=$(echo $line | jq '.ImagePath' | tr -d '"')
   taglessimage="$(retrieve_tagless_path $imagepath)"
   # Now find the image in sanctified images, (will be empty if not found), meaning we will  just delete.
   newimage=$(grep -roE "$taglessimage[^ ]*" 6-sanctified-images.txt)
-  echo $newimage
-  echo $line | jq --arg replace "$newimage" '.ImagePath=$replace'
+  echo $line | jq -c --arg replace "$newimage" '.ImagePath=$replace' >> 6-replacement-images.txt
 done
 
 

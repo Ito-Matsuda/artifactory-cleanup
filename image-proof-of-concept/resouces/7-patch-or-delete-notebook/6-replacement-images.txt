@@ -1,3 +1,3 @@
 {"Namespace":"jose-matsuda","ImagePath":"","Name":"doubletestcheck","Version":"1.0.0"}
-{"Namespace":"jose-matsuda","ImagePath":"","Name":"changeimage-del","Version":"1.0.0"}
+{"Namespace":"jose-matsuda","ImagePath":"","Name":"someuser","Version":"1.0.0"}
 {"Namespace":"jose-matsuda","ImagePath":"k8scc01covidacr.azurecr.io;jupyterlab-cpu:f25cad42","Name":"changeimage","Version":"1.0.0"}

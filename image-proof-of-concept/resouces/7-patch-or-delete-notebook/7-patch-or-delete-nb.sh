@@ -6,7 +6,8 @@ delete_notebook_server () {
   usernamespace=${2}
   deletecommand="kubectl delete notebook $notebookname --namespace $usernamespace"
   echo $deletecommand
-  #eval $deletecommand
+  eval $deletecommand
+  #In this event the "someuser" is meant to represent a user created notebook image
 }
 
 #Loop through 6-replacement-images.txt
@@ -25,7 +26,7 @@ do
      delete_notebook_server $name $namespace
      continue
   fi
-  runpatch="kubectl patch notebook $name --type='json' -p='[{\"op\": \"replace\", \"path\": \"/spec/template/spec/containers/0/image\",\"value\":\"$imagepath\"]' --namespace $namespace"
+  runpatch="kubectl patch notebook $name --type='json' -p='[{\"op\": \"replace\", \"path\": \"/spec/template/spec/containers/0/image\",\"value\":\"$imagepath\"}]' --namespace $namespace"
   echo $runpatch
-  #eval $runpatch
+  eval $runpatch
 done

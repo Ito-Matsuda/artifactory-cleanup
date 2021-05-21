@@ -1,5 +1,22 @@
 #!/bin/sh
 
+
+###############################################
+# Purpose: Compare images in use and the vulnerable images 
+# to find out what needs to be patched / deleted
+#####
+# Input: 
+# 2-kubectl-notebook: List of all notebook images used in cluster
+# 4-impacted-artifacts: List of all impacted artifacts
+#####
+# Actions: Using 2-kubectl-notebook's 'ImagePath', compare with 4-impacted-artifacts
+# to find any hits. If there is a hit write to 5-user-items.txt
+#####
+# TODO: Confirm any wants for 'admin'. Right now only concerned w/ user notebooks.
+# haven't done extensive testing on things we want for admin
+###############################################
+
+
 #####################################################################################################################
 # USER/ADMIN SHARED FORMATTING 
 # Avoid any escaping problems by going from `\` --> `;`
@@ -25,6 +42,7 @@ do
      echo $line >> 5-user-items.txt
   fi
 done
+
 ##################################
 ## RIGHT NOW (for demo at least, this is all I want) ##
 #This 5-user-items.txt has the information. (well it could use the label for version as well)

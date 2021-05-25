@@ -32,9 +32,8 @@ sed "s/:/\//" 2-notebook-images.txt >> 2-notebook-artifactory-comp.txt
 
 # kubectl get pods --namespace jose-matsuda -o jsonpath="{.items[*].spec.containers[*].image}" | tr -s '[[:space:]]' '\n' | sort | uniq >> 2-kubectl-pod-images.txt
 # Replace any : with / for easy comparison with artifactory
-# Keep this uncommented as it is used in Step 3 for an 'ultimate' do not delete these images. 
+# Used in Step 3 for an 'ultimate' do not delete these "old" images but are actively in use. 
 sed -i "s/:/\//" 2-kubectl-pod-images.txt
 
-# Remove any images used in notebooks found from the get pods.
-# This might be useless now. 
+# Remove any images used in notebooks found from the get pods. Might not be needed 
 awk 'NR==FNR{a[$0];next} !($0 in a)' 2-notebook-artifactory-comp.txt 2-kubectl-pod-images.txt >> 2-used-non-notebook-images.txt

@@ -19,9 +19,9 @@
 
 #####################################################################################################################
 # USER/ADMIN SHARED FORMATTING 
-# Avoid any escaping problems by going from `\` --> `;`
+# Avoid any escaping problems by going from `/` --> `;`
 sed -i 's/\//;/g' 4C-formatted-impacted-artifacts.txt 
-sed -i 's/\//;/g' 2-notebook-images.txt
+sed -i 's/\//;/g' 2-notebook-images.txt # actually only used admin side, not used w/ users
 #####################################################################################################################
 
 
@@ -34,7 +34,7 @@ sed -i 's/\//;/g' 2-notebook-images.txt
 sed 's/\//;/g' 2-kubectl-notebook.txt |
 while read -r line
 do
-  # extract the image from the file, trim the quotes, and replace the : with a ;
+  # extract the image from the file, trim the quotes, and replace the `:` with a `;`` to compare with vulnerabilities
   imageCheck=$(echo $line | jq -c '.ImagePath' | tr -d '"' | sed 's/:/;/g')
   # Look for the image in the imapacted artifacts and if found print the line to the list. 
   if grep -Fxq "$imageCheck" 4C-formatted-impacted-artifacts.txt 

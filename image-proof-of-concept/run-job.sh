@@ -12,27 +12,35 @@
 # All these scripts would be copied to the ggeneric landing area of the docker container
 echo "Starting Artifactory cleanup"
 # Retrieve old images
+echo "Retrieving Old images------------"
 ./1-get-old-images.sh
 
 # Retrieve images in use in the cluster
+echo "Getting images in use by the cluster------------"
 ./2-get-inuse-images.sh
 
 # Get a list of unused images by comparing the old and the images in use
+echo "Comparing old images with those in use------------"
 ./3-remove-in-use-from-list.sh
 
 # Call a delete on those images unused old images
+echo "Performing $1 on the unused old images------------"
 ./x-delete-images.sh 3-to-delete.txt $1
 
 # Get a list of vulnerable images
+echo "Getting a list of vulnerable images------------"
 ./4-get-violations.sh
 
 # Compare the vulnerable images and notebook images and get the intersection of the two.
+echo "Finding an intersection between vulnerable and used notebook images------------"
 ./5-make-comparisons.sh
 
 # If they exist, get a list of suitable images to update to.
+echo "Finding replacement notebook images------------"
 ./6-get-replacement-images.sh
 
 # Patch or delete the notebook depending on if there is an image to update to.
+echo "Patching or deleting notebook images------------"
 ./7-patch-or-delete-nb.sh
 
 # Delete the vulnerable images (these will contain more than just notebook images)
@@ -43,6 +51,7 @@ echo "Starting Artifactory cleanup"
 # Still need to determine if this will be necessary or can use the other one. 
 # Note that 4X-impacted artifacts is modified in step 5 '/' -> ';' to compare easily.
 # Change back to slash to have the location now.
+echo "Deleting vulnerable images from artifactory------------"
 sed -i 's/;/\//g' 4C-formatted-impacted-artifacts.txt 
 ./x-delete-images.sh 4C-formatted-impacted-artifacts.txt $1
 

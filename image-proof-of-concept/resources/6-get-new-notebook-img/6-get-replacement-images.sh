@@ -10,6 +10,7 @@
 # Actions: curl the github repo and format the yaml
 # Use 5-user-items and try to find a matching entry in the spawnerfile.
 # If found, replace, if not, have the imagepath changed to an empty string
+# Make sure the output files do not already exist (will mess up formatting)
 #####
 # TODO: Install yq on this image. http://mikefarah.github.io/yq/ 
 ###############################################

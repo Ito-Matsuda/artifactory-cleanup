@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ###############################################
 # Purpose: Patch or Delete notebooks in the cluster

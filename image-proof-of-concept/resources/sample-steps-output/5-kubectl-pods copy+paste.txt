@@ -1,6 +1,0 @@
-{"Namespace":"jose-matsuda","Image":"k8s;jupyterlab-cpu:shacode","Name":"somepodname"}
-{"Namespace":"jose-matsuda","Image":"docker-quickstart-local;my-docker-image:latest","Name":"otherpodname"}
-{"Namespace":"jose-matsuda","Image":"docker-quickstart-local;my-docker-image:5eefshacode","Name":"otherpodname"}
-
-
-THIS ACTS AS A QUICK REVERT TO 5-kubectl-pods.txt for testing replace

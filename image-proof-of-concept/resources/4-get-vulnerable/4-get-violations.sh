@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ###############################################
 # Purpose: Obtain a list of images that have passed a vulnerability threshold
@@ -16,7 +16,7 @@ URL="https://testjosez.jfrog.io/xray/api/v1/violations"
 
 # Currently checks for only CRITICAL vulnerabilities
 # Can change the filter to use a certain 'watch' --> "watch_name": "watch",
-curl -u myuser:! -X POST $URL -H "Content-Type: application/json" -d @4-violationscheck.json >> 4-violations.json
+curl -u myuser:$1 -X POST $URL -H "Content-Type: application/json" -d @4-violationscheck.json >> 4-violations.json
 
 # impacted artifacts itself is encased in '[]' and could have multiple in it.
 # see:https://www.jfrog.com/confluence/display/JFROG/Xray+REST+API#XrayRESTAPI-GetViolations

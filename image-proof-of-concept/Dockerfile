@@ -1,5 +1,7 @@
 FROM ubuntu:20.04
 
+WORKDIR /home/cleanup
+
 #Install utilities here
 #jq 
 RUN apt-get update --yes &&\
@@ -33,6 +35,7 @@ COPY resources/6-get-new-notebook-img .
 COPY resources/7-patch-or-delete-notebook .
 COPY resources/x-delete-from-artif . 
 COPY run-job.sh . 
+
 # Grant files execute here
 RUN chmod +x run-job.sh
 

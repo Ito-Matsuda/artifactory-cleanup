@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ###############################################
 # Purpose: Obtain a list of images that are unused in the cluster

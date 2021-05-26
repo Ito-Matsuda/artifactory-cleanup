@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ###############################################
 # Purpose: Obtain a list of images being used in the cluster
@@ -15,8 +15,8 @@
 # TODO: Change kubectl to use all namespaces instead of jose-matsuda, uncomment kubectl commands
 ###############################################
 
-#kubectl get notebook --namespace jose-matsuda -o json | jq -c '.items[] | {Namespace:(.metadata.namespace), ImagePath:(.spec.template.spec.containers[0].image), 
-# Name:(.spec.template.spec.containers[0].name), Version: (.metadata.labels.version)}' | sort | uniq > 2-kubectl-notebook.txt
+kubectl get notebook --namespace jose-matsuda -o json | jq -c '.items[] | {Namespace:(.metadata.namespace), ImagePath:(.spec.template.spec.containers[0].image), 
+ Name:(.spec.template.spec.containers[0].name), Version: (.metadata.labels.version)}' | sort | uniq > 2-kubectl-notebook.txt
 
 # Compile a list of JUST images and paths, trimming quotes. 
 cat 2-kubectl-notebook.txt | 
@@ -30,7 +30,7 @@ done
 sed "s/:/\//" 2-notebook-images.txt >> 2-notebook-artifactory-comp.txt 
 
 
-# kubectl get pods --namespace jose-matsuda -o jsonpath="{.items[*].spec.containers[*].image}" | tr -s '[[:space:]]' '\n' | sort | uniq >> 2-kubectl-pod-images.txt
+ kubectl get pods --namespace jose-matsuda -o jsonpath="{.items[*].spec.containers[*].image}" | tr -s '[[:space:]]' '\n' | sort | uniq >> 2-kubectl-pod-images.txt
 # Replace any : with / for easy comparison with artifactory
 # Used in Step 3 for an 'ultimate' do not delete these "old" images but are actively in use. 
 sed -i "s/:/\//" 2-kubectl-pod-images.txt

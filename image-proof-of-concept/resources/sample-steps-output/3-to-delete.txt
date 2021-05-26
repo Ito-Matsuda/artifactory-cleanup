@@ -1,3 +1,0 @@
-docker-quickstart-local/hello-world/latest
-docker-quickstart-local/my-docker-image/delete1
-docker-quickstart-local/my-docker-image/delete2

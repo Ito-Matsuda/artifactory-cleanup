@@ -11,9 +11,13 @@
 
 # All these scripts would be copied to the ggeneric landing area of the docker container
 echo "Starting Artifactory cleanup"
+
+# for testing purposes 
+passwd=as
+
 # Retrieve old images
 echo "Retrieving Old images------------"
-./1-get-old-images.sh
+./1-get-old-images.sh passwd
 
 # Retrieve images in use in the cluster
 echo "Getting images in use by the cluster------------"
@@ -29,7 +33,7 @@ echo "Performing $1 on the unused old images------------"
 
 # Get a list of vulnerable images
 echo "Getting a list of vulnerable images------------"
-./4-get-violations.sh
+./4-get-violations.sh passwd
 
 # Compare the vulnerable images and notebook images and get the intersection of the two.
 echo "Finding an intersection between vulnerable and used notebook images------------"

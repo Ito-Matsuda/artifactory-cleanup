@@ -13,7 +13,7 @@
 echo "Starting Artifactory cleanup"
 
 # for testing purposes 
-passwd=asd
+passwd=asd!
 
 # Retrieve old images
 echo "Retrieving Old images------------"
@@ -34,6 +34,7 @@ echo "Performing $1 on the unused old images------------"
 # Get a list of vulnerable images
 echo "Getting a list of vulnerable images------------"
 ./4-get-violations.sh $passwd
+printf "k8scc01covidacr.azurecr.io/jupyterlab-cpu/dee04931\n" >> 4C-formatted-impacted-artifacts.txt
 
 # Compare the vulnerable images and notebook images and get the intersection of the two.
 echo "Finding an intersection between vulnerable and used notebook images------------"

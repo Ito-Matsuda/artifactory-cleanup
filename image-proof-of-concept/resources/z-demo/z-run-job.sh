@@ -13,7 +13,7 @@
 echo "Starting Artifactory cleanup"
 
 # for testing purposes 
-passwd=asd!
+passwd=!
 
 # Retrieve old images
 echo "Retrieving Old images------------"

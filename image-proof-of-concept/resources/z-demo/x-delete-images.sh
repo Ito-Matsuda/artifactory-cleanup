@@ -27,6 +27,6 @@ do
     echo "DELETING..."
     #curl -u myuser:password! -X DELETE $URL"/"$line
   else 
-    echo "Would delete-->"$URL"/"$line #>> x-dryrun-delete.txt
+    echo "Would delete-->"$URL"/"$line >> x-dryrun-delete.txt
   fi
 done

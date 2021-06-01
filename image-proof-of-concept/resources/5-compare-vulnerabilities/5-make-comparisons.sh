@@ -20,7 +20,7 @@
 #####################################################################################################################
 # USER/ADMIN SHARED FORMATTING 
 # Avoid any escaping problems by going from `/` --> `;`
-sed -i 's/\//;/g' 4C-formatted-impacted-artifacts.txt 
+#sed -i 's/\//;/g' 4C-formatted-impacted-artifacts.txt  #now done in previous step
 #sed -i 's/\//;/g' 2-notebook-images.txt # actually only used admin side, not used w/ users
 #####################################################################################################################
 

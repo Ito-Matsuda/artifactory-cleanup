@@ -1,23 +1,20 @@
-#apiver,kind,metadata required
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: test
+  name: nb-artifactory-cleanup
 
 #spec section required. 
 spec:
-# runs this job every 5 mins. use crontabguru
-  schedule: "*/5 * * * *"
-  jobTemplate: #this spec.jobtemplate is required
-  #same schema as a job. but no apivers or kind
+  schedule: "0 3 * * 1-5"
+  jobTemplate:
     spec:
-      template: #required, this is the beginning of a pod template
+      template:
         spec:
           containers:
-            - name: hello
-              image: bash
-              command: ["echo",  "Hello world"]
+            - name: nb-artifactory-cleanup
+              image: myimagenamehere
+              command: ["run-job.sh"] # this would override whats in the Dockerfile
+              args: ["${{ secrets.ARTI_USERNAME }}","${{ secrets.ARTI_PWRD }}","lol"] #things like username, password, actual run "DELETE" here some secrets things
           restartPolicy: OnFailure
-
 
 # apply with kubectl apply -f basic-cron.yaml

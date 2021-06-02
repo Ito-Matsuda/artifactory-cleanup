@@ -1,7 +1,2 @@
-General resources 
-
-Tools that wont come prepackaged with whatever I base the image off of
-
-kubectl
-
-yq (used in step 6)
+These steps are mostly self-explanatory, will have a readme if there are some more complicated steps
+that might be hard to explain / just crowd the pre-amble

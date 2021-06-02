@@ -7,7 +7,7 @@
 #####
 # Input: 
 # 2-kubectl-notebook: List of all notebook images used in cluster
-# 4-impacted-artifacts: List of all impacted artifacts
+# 4C-impacted-artifacts: List of all impacted artifacts
 #####
 # Actions: Using 2-kubectl-notebook's 'ImagePath', compare with 4-impacted-artifacts
 # to find any hits. If there is a hit write to 5-user-items.txt
@@ -39,7 +39,7 @@ do
   # Look for the image in the imapacted artifacts and if found print the line to the list. 
   if grep -Fxq "$imageCheck" 4C-formatted-impacted-artifacts.txt 
   then
-     echo $line >> 5-user-items.txt
+     echo $line >> 5-impacted-notebooks.txt
   fi
 done
 
@@ -61,6 +61,7 @@ done
 # Discuss this idea... 
 #ISTIO_VULN=false
 #VAULT_VULN=false
+#This could be UNIQ'd instead. 
 
 # kubectl get pods --namespace jose-matsuda -o json | jq -c '.items[] | {Namespace:(.metadata.namespace), Image:(.spec.containers[].image), Name:(.spec.containers[].name)}' > 5-kubectl-pods.txt
 

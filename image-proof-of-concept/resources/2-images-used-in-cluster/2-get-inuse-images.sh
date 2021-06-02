@@ -29,7 +29,6 @@ done
 # If you remove the last 'awk' this may no longer be needed. 
 sed "s/:/\//" 2-notebook-images.txt >> 2-notebook-artifactory-comp.txt 
 
-
  kubectl get pods --namespace jose-matsuda -o jsonpath="{.items[*].spec.containers[*].image}" | tr -s '[[:space:]]' '\n' | sort | uniq >> 2-kubectl-pod-images.txt
 # Replace any : with / for easy comparison with artifactory
 # Used in Step 3 for an 'ultimate' do not delete these "old" images but are actively in use. 

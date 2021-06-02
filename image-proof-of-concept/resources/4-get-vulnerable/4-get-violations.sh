@@ -8,6 +8,9 @@
 #####
 # Actions: API call to Artifactory. 
 # Format to get the impacted artifacts in a list
+# If one of our provisioned manifest images is on the vulnerable list.
+# REMOVE IT from the list (to prevent the delete of server and image so user isn't left with nothing)
+# An email (not this step) will be sent to the admins about this vulnerability and tell them to update it ASAP.
 #####
 # TODO: Change the URL, obtain relevant credentials, confirm the .json request
 ###############################################
@@ -70,6 +73,6 @@ retrieve_tagless_path () {
   echo $imagepath
 }
 
-# This is for stuff in 4C (copy paste etc).
+# Following are to copy paste in 4C to trigger a test / verify the outcome.
 #k8scc01covidacr.azurecr.io;jupyterlab-cpu;blah
 #k8scc01covidacr.azurecr.io;jupyterlab-cpu;f25cad42

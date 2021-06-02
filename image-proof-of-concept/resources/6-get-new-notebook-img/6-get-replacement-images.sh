@@ -15,6 +15,7 @@
 # TODO: Install yq on this image. http://mikefarah.github.io/yq/ 
 ###############################################
 
+# Could re-use from step 4. 
 curl -o 6-spawnerfile.yaml https://raw.githubusercontent.com/StatCan/kubeflow-manifest/master/kustomize/application/jupyter-web-app/configs/spawner_ui_config.yaml
 
 # Format
@@ -30,12 +31,14 @@ retrieve_tagless_path () {
 }
 
 # Going line by line in 5-user-items, compare with this 6-sanctified images and if you find a hit replace
-cat 5-user-items.txt | 
+cat 5-impacted-notebooks.txt | 
 while read -r line
 do
   imagepath=$(echo $line | jq '.ImagePath' | tr -d '"')
   taglessimage="$(retrieve_tagless_path $imagepath)"
   # Now find the image in sanctified images, (will be empty if not found), meaning we will delete.
+  # Could add verification here. as in tagless image must start with our repo name?
+  # If there's another image that looks like jupyter then I think the grep below may die. 
   newimage=$(grep -roE "$taglessimage[^ ]*" 6-sanctified-images.txt)
   echo $line | jq -c --arg replace "$newimage" '.ImagePath=$replace' >> 6-replacement-images.txt
 done

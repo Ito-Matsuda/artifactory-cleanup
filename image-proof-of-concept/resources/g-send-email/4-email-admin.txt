@@ -1,0 +1,4 @@
+k8scc01covidacr.azurecr.io;jupyterlab-cpu;f25cad42
+hello 
+world
+new

@@ -56,27 +56,16 @@ done
 # Step X get a list of affected pods in the cluster. 
 # Having said that I wouldn't want to be an admin recieving a ton of the same info about some istio / vault vulnerability (these are in each notebook server)
 
-#Declare Variables that indicate that an image is vulnerable. These will be for the other images inside the notebook (not the jupyterlab etc)
-# or are shared across many pods so as to not flood the admin with notifications. 
-# Discuss this idea... 
-#ISTIO_VULN=false
-#VAULT_VULN=false
 #This could be UNIQ'd instead. 
 
+# probably too much information. 
 # kubectl get pods --namespace jose-matsuda -o json | jq -c '.items[] | {Namespace:(.metadata.namespace), Image:(.spec.containers[].image), Name:(.spec.containers[].name)}' > 5-kubectl-pods.txt
+
+#instead do 
+#kubectl get pods --namespace jose-matsuda -o json | jq -c '.items[] | {image:(.spec.containers[].image)} | sort | uniq' > 5-kubectl-pods.txt
 
 # Sed the slashes to semicolons (may want to change back to slashes after comparison)
 #sed -i 's/\//;/g' 5-kubectl-pods.txt
-
-#Take out images used in notebooks (since there may be many in use) 
-# Change to semicolon to prevent escaping in the 'sed'
-#cat 2-notebook-images.txt | 
-#while read -r line
-#do
-#  sed -i "/$line/d" 5-kubectl-pods.txt
-#done
-
-#At this point 5-kubectl-pods.txt contains information on images not used in notebook servers.
 
 #Now do a comparison w/ 4C-formatted-impacted-artifacts.txt
 # We want to keep in 5-kubectl-pods.txt what is in 4C. So remove anything not in 4C
@@ -92,13 +81,6 @@ done
 #     echo $line >> 5-admin-items.txt
 #  fi
 #done 
-
-# Need to do add back in the images used in notebooks (but just one of them each. don't have tens of jupyterlab-cpu if it's the same image)
-#cat user-items.txt | 
-#while read -r line
-#do
-#  echo $line | jq -c '.ImagePath'| tr -d '"' | sed 's/:/;/g' >> 5-user-items-image-list.txt
-#done
 
 #cat 5-user-items-image-list.txt | sort | uniq |
 #while read -r line

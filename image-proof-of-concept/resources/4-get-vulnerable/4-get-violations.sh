@@ -11,6 +11,7 @@
 # If one of our provisioned manifest images is on the vulnerable list.
 # REMOVE IT from the list (to prevent the delete of server and image so user isn't left with nothing)
 # An email (not this step) will be sent to the admins about this vulnerability and tell them to update it ASAP.
+# Could configure the watch to only look at our user provisioned images (so not any from the remote repos)
 #####
 # TODO: Change the URL, obtain relevant credentials, confirm the .json request
 ###############################################

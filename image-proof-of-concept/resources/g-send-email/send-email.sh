@@ -16,8 +16,6 @@ echo $MESSAGE | mail -s $SUBJECT $TO
 
 
 #ADMIN EMAIL
-SUBJECT="Alert: Notebook server has no viable update image"
 TO="tongster789@gmail.com" #list of admins or whatever
-MESSAGE="The following images in the manifest are vulnerable
-and need to be updated asap."'\n'"$(cat 4-email-admin.txt)"
-echo $MESSAGE | mail -s $SUBJECT $TO
+MESSAGE="The following images in the manifest are vulnerable and need to be updated asap."'\n'"$(cat 4-email-admin.txt)"
+echo "$MESSAGE" | mail -s "Alert Notebook server has no viable update image" $TO

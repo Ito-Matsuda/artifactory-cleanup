@@ -24,13 +24,6 @@ MESSAGE="The following images in the manifest are vulnerable and need to be upda
 
 
 # Email to USERS
-SUBJECT="Alert: Vulnerability found in notebook server" #This stays constant
-TO="tongthrow@gmail.com tongster789@gmail.com" # or throw this in a loop. 
-MESSAGE="Hello we found some vulnerable stuff pls do something"
-
-#Modify the message above somehow. \
-# comment out for now to test parsing the files 
-#echo $MESSAGE | mail -s $SUBJECT $TO
 
 while true; do
     read -r line < 6-replacement-images.txt 
@@ -41,10 +34,11 @@ while true; do
     #Get list that contain that namespace. 
     grep $namespace 6-replacement-images.txt > g-one-namespace-file.txt
 
-    # Act on that list somehow (send emails etc. )
     echo "Sending emails... "
+    userEmail=$(findUserEmail() $namespace)
+    sendUserEmail() $userEmail $namespace
 
-    # Remove the $namespace from the file (should be with -i)
+    # Remove the $namespace from the file
     sed -i "/$namespace/d" 6-replacement-images.txt
     # Remove the temporary one-namespace file (so it can be re-written)
     rm g-one-namespace-file.txt
@@ -56,3 +50,31 @@ while true; do
         break
     fi
 done
+
+# Using the Namespace find out what the email address is. 
+findUserEmail(){
+    echo $1
+}
+
+# Construct the contents of the email and send it
+sendUserEmail(){
+    SUBJECT="Alert: Vulnerability found in namespace: $2"
+    TO="tongster789@gmail.com tongthrow@gmail.com"
+    MESSAGE="One or more of your notebook servers has been found to be using a vulnerable image and have been patched or deleted."
+    #Loop through g-one-namespace-file.txt
+    while read -r jsonline; do
+        #read imgpath nbname < <(echo $jsonline | jq -r '.ImagePath, .Name') # not working???
+        nbName=$(echo $jsonline | jq -r '.Name')
+        imgPath=$(echo $jsonline | jq -r '.ImagePath')
+        
+        # If imgPath is empty then the server was deleted.
+        if [ -z "$imgPath" ] ; then
+            MESSAGE=$MESSAGE$'\n'"Notebook named '$nbName' was deleted as there was no suitable update image"
+        else
+            MESSAGE=$MESSAGE$'\n'"Notebook named '$nbName' was upgraded to a safe image"
+        fi
+        
+    done < g-one-namespace-file.txt
+    #FULL SEND
+    # echo "${MESSAGE}" | mail -s $SUBJECT $TO
+}

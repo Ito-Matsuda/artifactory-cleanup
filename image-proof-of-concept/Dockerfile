@@ -3,12 +3,13 @@ FROM ubuntu:20.04
 WORKDIR /home/cleanup
 
 #Install utilities here
-#jq 
 RUN apt-get update --yes &&\
     apt-get install -y \
     'jq' \
     'curl' \
-    'wget'
+    'wget' \ 
+    'ssmtp' \
+    'mailutils'
 
 #yq https://github.com/mikefarah/yq/releases/download/v4.9.3/yq_linux_amd64
 ARG YQ_VERSION=4.9.3
@@ -33,8 +34,12 @@ COPY resources/4-get-vulnerable .
 COPY resources/5-compare-vulnerabilities .
 COPY resources/6-get-new-notebook-img .
 COPY resources/7-patch-or-delete-notebook .
+COPY resources/g-send-email . 
 COPY resources/x-delete-from-artif . 
 COPY run-job.sh . 
+
+#Configure SMTP (by copying file)
+RUN mv ssmtp.conf /etc/ssmtp/
 
 # Grant files execute here
 RUN chmod +x run-job.sh

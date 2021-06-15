@@ -59,7 +59,7 @@ findUserEmail(){
 # Construct the contents of the email and send it
 sendUserEmail(){
     SUBJECT="Alert: Vulnerability found in namespace: $2"
-    TO="tongster789@gmail.com tongthrow@gmail.com"
+    TO="tongster789@gmail.com tongthrow@gmail.com" #substitute with $1
     MESSAGE="One or more of your notebook servers has been found to be using a vulnerable image and have been patched or deleted."
     #Loop through g-one-namespace-file.txt
     while read -r jsonline; do

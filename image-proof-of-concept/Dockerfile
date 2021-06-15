@@ -47,3 +47,4 @@ RUN chmod +x run-job.sh
 RUN find ./ -type f -iname "*.sh" -exec chmod +x {} \;
 
 CMD ./run-job.sh
+#This CMD is overwritten by the CRON command anyways

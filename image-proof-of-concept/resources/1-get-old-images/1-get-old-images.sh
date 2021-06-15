@@ -13,6 +13,7 @@
 ###############################################
 
 # Get a list of images whose creation date is older than 4 weeks and their last download date is older than a week
+#GH secrets use ENV
 URL="https://testjosez.jfrog.io/artifactory/api/search/aql"
 curl -u myuser:$1 -X POST $URL -H "content-type: text/plain" -d @old-images-request.txt >> 1-artifactory-get.json 
 

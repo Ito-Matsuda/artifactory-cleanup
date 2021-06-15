@@ -59,6 +59,7 @@ echo "Deleting vulnerable images from artifactory------------"
 sed -i 's/;/\//g' 4C-formatted-impacted-artifacts.txt 
 ./x-delete-images.sh 4C-formatted-impacted-artifacts.txt $1
 
-#Send emails here...
+echo "Sending Admin / User emails"
+./g-send-email.sh
 
 echo "Ending Artifactory cleanup"

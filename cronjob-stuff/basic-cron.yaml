@@ -3,7 +3,6 @@ kind: CronJob
 metadata:
   name: nb-artifactory-cleanup
 
-#spec section required. 
 spec:
   schedule: "0 3 * * 1-5"
   jobTemplate:
@@ -14,7 +13,20 @@ spec:
             - name: nb-artifactory-cleanup
               image: myimagenamehere
               command: ["run-job.sh"] # this would override whats in the Dockerfile
-              args: ["${{ secrets.ARTI_USERNAME }}","${{ secrets.ARTI_PWRD }}","lol"] #things like username, password, actual run "DELETE" here some secrets things
+              args: ["DELETE"] #actual run "DELETE" 
+              env:
+              - name: ARTIFACTORY_URL
+                value: "${{ secrets.ARTIFACTORY_URL }}"
+              - name: ARTIFACTORY_USERNAME
+                value: "${{ secrets.ARTIFACTORY_USERNAME }}"
+              - name: ARTIFACTORY_PWD
+                value: "${{ secrets.ARTIFACTORY_PWD }}"
+              - name: SMTP_RELAY_ADDRESS
+                value: "${{ secrets.SMTP_RELAY_ADDRESS }}"
+              - name: SMTP_USERNAME
+                value: "${{ secrets.SMTP_USERNAME }}"
+              - name: SMTP_PWD
+                value: "${{ secrets.SMTP_PWD }}"
           restartPolicy: OnFailure
 
 # apply with kubectl apply -f basic-cron.yaml

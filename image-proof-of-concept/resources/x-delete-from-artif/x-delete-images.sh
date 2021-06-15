@@ -17,7 +17,7 @@
 # TODO: Change the URL, confirm credentials
 ###############################################
 
-# This URL should be changed to ours
+# This URL should be changed to ours. change to use GH secrets $ARTIFACTORY_URL
 URL="https://testjosez.jfrog.io/artifactory"
 
 cat $1 | 

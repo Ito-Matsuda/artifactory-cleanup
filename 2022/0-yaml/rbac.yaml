@@ -1,0 +1,31 @@
+# ClusterRole allow access to secrets
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: notebook-img-cleanup-role
+rules:
+  - apiGroups: ["kubeflow.org/v1"] #under v1 which is the core api group so we ok
+    resources: ["notebooks"] 
+    verbs: ["get", "update", "list"]
+---
+#Service Account
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: notebook-img-cleanup-sa
+  namespace: notebook-cleanup
+---
+# RoleBinding, specifically for 
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: notebook-cleanup
+  name: notebook-img-cleanup-rb
+subjects:
+- kind: ServiceAccount
+  name: notebook-img-cleanup-sa
+  namespace: notebook-cleanup
+roleRef:
+  kind: ClusterRole
+  name: notebook-img-cleanup-role
+  apiGroup: rbac.authorization.k8s.io/v1

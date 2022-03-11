@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: image-cleanup
+spec:
+  schedule: "0 22 * * 5"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: notebook-img-cleanup-sa
+          automountServiceAccountToken: true
+          restartPolicy: OnFailure
+          containers:
+          - name: hello
+            image: dockerimagehere
+            imagePullPolicy: IfNotPresent
+            command:
+            - /bin/sh
+            - -c
+            - date; echo Hello from the Kubernetes cluster
+# UNFINISHED

@@ -14,19 +14,17 @@
 # and again after the delete + email notifications have been sent
 # Takes in a list of paths and deletes them from artifactory.
 #####
-# TODO: Change the URL, confirm credentials
+# TODO: Confirm credentials
 ###############################################
-
-# This URL should be changed to ours. change to use GH secrets $ARTIFACTORY_URL
-URL="https://testjosez.jfrog.io/artifactory"
 
 cat $1 | 
 while read -r line
 do
   if [ "$2" = "DELETE" ]; then
     echo "DELETING..."
-    #curl -u myuser:password! -X DELETE $URL"/"$line
+    #curl -u myuser:password! -X DELETE $ARTIFACTORY_URL"/"$line
+    # Uncomment and redeploy once sure.
   else 
-    echo "Would delete-->"$URL"/"$line #>> x-dryrun-delete.txt
+    echo "Would delete-->"$ARTIFACTORY_URL"/"$line #>> x-dryrun-delete.txt
   fi
 done

@@ -12,8 +12,11 @@
 # All these scripts would be copied to the ggeneric landing area of the docker container
 echo "Starting Artifactory cleanup"
 
-# for testing purposes 
-passwd=as
+# TEST ENV VARIABLES FOR TESTING
+ARTIFACTORY_URL="https://testjosez.jfrog.io/artifactory"
+# REPLACE the entries with their specific env variables once needed.
+ARTIFACTORY_PWD=test
+passwd=$ARTIFACTORY_PWD
 
 # Retrieve old images
 echo "Retrieving Old images------------"
@@ -45,7 +48,7 @@ echo "Finding replacement notebook images------------"
 
 # Patch or delete the notebook depending on if there is an image to update to.
 echo "Patching or deleting notebook images------------"
-./7-patch-or-delete-nb.sh
+./7-patch-or-delete-nb.sh $1
 
 # Delete the vulnerable images (these will contain more than just notebook images)
 # Should confirm if this is ok. 

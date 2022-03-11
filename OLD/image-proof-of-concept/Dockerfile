@@ -9,7 +9,13 @@ RUN apt-get update --yes &&\
     'curl' \
     'wget' \ 
     'ssmtp' \
-    'mailutils'
+    'mailutils' \
+    'postgresql-client-common' \
+    'postgresql-client-12'
+
+#Postgresql both packages required to use psql CLI (though additional config may be needed.)
+# as in i installed both on my personal and tried using it out of box to failure
+#Will I need to have it run kubectl port-forward???? but how do I achieve that 
 
 #yq https://github.com/mikefarah/yq/releases/download/v4.9.3/yq_linux_amd64
 ARG YQ_VERSION=4.9.3

@@ -13,7 +13,7 @@ spec:
             - name: nb-artifactory-cleanup
               image: myimagenamehere
               command: ["run-job.sh"] # this would override whats in the Dockerfile
-              args: ["DELETE"] #actual run "DELETE" 
+              args: ["Empty"] #actual run "DELETE"
               env:
               - name: ARTIFACTORY_URL
                 value: "${{ secrets.ARTIFACTORY_URL }}"
@@ -30,3 +30,4 @@ spec:
           restartPolicy: OnFailure
 
 # apply with kubectl apply -f basic-cron.yaml
+# another way to use secrets is to use in the CI?

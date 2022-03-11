@@ -48,6 +48,15 @@ done
 #This 5-user-items.txt has the information. (well it could use the label for version as well)
 ##################################
 
+
+######################
+### 19/06/2021
+### I think the below items are out of scope.
+### Any administrative images we use are checked.
+### Only concern with notebook servers themselves.
+######################
+
+
 #####################################################################################################################
 # VULNERABILITIES FOR ADMIN
 # Need to decide if these will automatically update

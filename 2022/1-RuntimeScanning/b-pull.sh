@@ -11,18 +11,20 @@
 #### each line in text file should represent an image looking like k8s...io/jupyterlab-cpu:f25cad42
 ### Send pull requests to Artifactory
 ### docker pull jfrog.aaw.cloud.statcan.ca/k8s...io/jupyterlab-cpu:f25cad42
-# https://askubuntu.com/a/424333
 ###############################################
 
 
-cat 2-uniqe-nb-images.txt | 
+cat a-uniqe-nb-images.txt | 
 while read -r line
 do
-  #docker pull jfrog.aaw.cloud.statcan.ca/$line 2>&1 | 
-  if grep -Fxq "Error response from daemon: unknown: Forbidden"
-  then
-    echo $line >> impacted-images.txt
-  fi
-  # impacted-images is a list of vulnerable images.
-  # redirect the output and check for "Error response from daemon?"
+  docker pull jfrog.aaw.cloud.statcan.ca/$line
 done
+
+# OLD IDEA (in the do) but pivot back to using XRAY API to get vulnerabilities.
+#docker pull jfrog.aaw.cloud.statcan.ca/$line 2>&1 | 
+#if grep -Fxq "Error response from daemon: unknown: Forbidden"
+ #then
+ #  echo $line >> impacted-images.txt
+ #fi
+ # impacted-images is a list of vulnerable images.
+ # redirect the output and check for "Error response from daemon?"

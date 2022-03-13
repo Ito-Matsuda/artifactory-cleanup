@@ -1,3 +1,0 @@
-asdasd
-Error response from daemon: unknown: Forbidden
-noise

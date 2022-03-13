@@ -1,0 +1,5 @@
+asdasd
+Error response from daemon: unknown: Forbidden
+noise
+
+### This is the response from a docker pull jfrog...acr.io/image:tag from artifactory if it fails scanning.

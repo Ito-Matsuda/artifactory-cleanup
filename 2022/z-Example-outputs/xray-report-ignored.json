@@ -1,0 +1,22 @@
+{
+    "total_violations": 1,
+    "violations": [
+        {
+            "description": "The mq_notify function in the GNU C Library (aka glibc) versions 2.32 and 2.33 has a use-after-free. It may use the notification thread attributes object (passed through its struct sigevent parameter) after it has been freed by the caller, leading to a denial of service (application crash) or possibly unspecified other impact.",
+            "severity": "Critical",
+            "type": "Security",
+            "infected_components": [
+                "deb://debian:buster:libc-dev-bin:2.28-10",
+                "deb://debian:buster:libc-bin:2.28-10",
+                "deb://debian:buster:libc6:2.28-10"
+            ],
+            "created": "2022-03-10T14:23:01Z",
+            "watch_name": "watch-jose-docker",
+            "issue_id": "XRAY-176704",
+            "violation_details_url": "https://jfrog.aaw.cloud.statcan.ca/xray/api/v1/violations?watch_id=37c82da21446d42898ba60f5&issue_id=XRAY-176704&comp_id=docker:%2F%2Fbitnami%2Fnode:latest",
+            "impacted_artifacts": [
+                "default/jose-play-cache/bitnami/node/latest/"
+            ]
+        }
+    ]
+}

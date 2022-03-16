@@ -22,7 +22,7 @@
         {
             "description": "The wordexp function in the GNU C Library (aka glibc) through 2.33 may crash or read arbitrary memory in parse_param (in posix/wordexp.c) when called with an untrusted, crafted pattern, potentially resulting in a denial of service or disclosure of information. This occurs because atoi was used but strtoul should have been used to ensure correct calculations.",
             "severity": "Critical",
-            "type": "Security",
+            "type": "Security THIS A TEST",
             "infected_components": [
                 "deb://debian:buster:libc-dev-bin:2.28-10",
                 "deb://debian:buster:libc-bin:2.28-10",
@@ -33,7 +33,7 @@
             "issue_id": "XRAY-178694",
             "violation_details_url": "https://jfrog.aaw.cloud.statcan.ca/xray/api/v1/violations?watch_id=37c82da21446d42898ba60f5&issue_id=XRAY-178694&comp_id=docker:%2F%2Fbitnami%2Fnode:latest",
             "impacted_artifacts": [
-                "default/jose-play-cache/bitnami/node/latest/"
+                "default/jose-play-cache/jupyterlab-cpu/16b01881/"
             ]
         }
     ]

@@ -1,0 +1,2 @@
+bitnami;node;latest
+jupyterlab-cpu;16b01881

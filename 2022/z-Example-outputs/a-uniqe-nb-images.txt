@@ -1,0 +1,2 @@
+k8sr.azurecr.io/jupyterlab-cpu:16b01881
+k8sr.azurecr.io/rstudio:16b01881

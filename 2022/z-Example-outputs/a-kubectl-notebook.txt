@@ -1,0 +1,4 @@
+{"Namespace":"jose-matsuda","ImagePath":"k8sr.azurecr.io/jupyterlab-cpu:16b01881","Name":"jup2","Version":null}
+{"Namespace":"jose-matsuda","ImagePath":"k8sr.azurecr.io/rstudio:16b01881","Name":"other","Version":null}
+{"Namespace":"jose-matsuda","ImagePath":"k8sr.azurecr.io/rstudio:16b01881","Name":"othaaer","Version":null}
+{"Namespace":"jose-matsuda","ImagePath":"k8sr.azurecr.io/rstudio:16b01881","Name":"oaaather","Version":null}

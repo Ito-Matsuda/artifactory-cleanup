@@ -2,6 +2,7 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: image-cleanup
+  namespace: notebook-cleanup
 spec:
   schedule: "0 22 * * 5"
   jobTemplate:
@@ -19,4 +20,15 @@ spec:
             - /bin/sh
             - -c
             - date; echo Hello from the Kubernetes cluster
-# UNFINISHED
+            env:
+              - name: JFROG_USERNAME
+                valueFrom:
+                  secretKeyRef:
+                    name: jfrog-secret
+                    key: username
+              - name: JFROG_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: jfrog-secret
+                    key: password
+# UNFINISHED, must create secret in namespace for this

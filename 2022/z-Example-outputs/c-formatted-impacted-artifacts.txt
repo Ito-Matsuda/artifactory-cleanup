@@ -1,0 +1,2 @@
+jose-play-cache/bitnami/node/latest
+jose-play-cache/jupyterlab-cpu/16b01881

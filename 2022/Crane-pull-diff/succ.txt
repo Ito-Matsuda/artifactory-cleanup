@@ -1,0 +1,180 @@
+crane pull jfrog.aaw.cloud.statcan.ca/jose-play/alpine alpine -c temp -v
+2022/03/17 23:13:32 --> GET https://jfrog.aaw.cloud.statcan.ca/v2/
+2022/03/17 23:13:32 GET /v2/ HTTP/1.1
+Host: jfrog.aaw.cloud.statcan.ca
+User-Agent: crane/v0.8.0 go-containerregistry/v0.8.0
+Accept-Encoding: gzip
+
+
+2022/03/17 23:13:32 <-- 401 https://jfrog.aaw.cloud.statcan.ca/v2/ (166.403772ms)
+2022/03/17 23:13:32 HTTP/2.0 401 Unauthorized
+Content-Length: 87
+Content-Type: application/json;charset=ISO-8859-1
+Date: Fri, 18 Mar 2022 03:13:32 GMT
+Docker-Distribution-Api-Version: registry/2.0
+Server: istio-envoy
+Www-Authenticate: Bearer realm="https://jfrog.aaw.cloud.statcan.ca/v2/token",service="jfrog.aaw.cloud.statcan.ca"
+X-Envoy-Upstream-Service-Time: 2
+
+{"errors":[{"code":"UNAUTHORIZED","message":"authentication required","detail":null}]}
+
+2022/03/17 23:13:32 --> GET https://jfrog.aaw.cloud.statcan.ca/v2/token?scope=repository%3Ajose-play%2Falpine%3Apull&service=jfrog.aaw.cloud.statcan.ca [body redacted: basic token response contains credentials]
+2022/03/17 23:13:32 GET /v2/token?scope=repository%3Ajose-play%2Falpine%3Apull&service=jfrog.aaw.cloud.statcan.ca HTTP/1.1
+Host: jfrog.aaw.cloud.statcan.ca
+User-Agent: crane/v0.8.0 go-containerregistry/v0.8.0
+Accept-Encoding: gzip
+
+
+2022/03/17 23:13:32 <-- 200 https://jfrog.aaw.cloud.statcan.ca/v2/token?scope=repository%3Ajose-play%2Falpine%3Apull&service=jfrog.aaw.cloud.statcan.ca (66.807485ms) [body redacted: basic token response contains credentials]
+2022/03/17 23:13:32 HTTP/2.0 200 OK
+Connection: close
+Content-Type: application/json
+Date: Fri, 18 Mar 2022 03:13:32 GMT
+Server: istio-envoy
+X-Artifactory-Id: ebf2d744300bccf50d12b7eac2b996fdf7369aaf
+X-Artifactory-Node-Id: jfrog-platform-artifactory-ha-primary-0
+X-Envoy-Upstream-Service-Time: 14
+X-Jfrog-Version: Artifactory/7.19.13 71913900
+
+
+2022/03/17 23:13:32 --> GET https://jfrog.aaw.cloud.statcan.ca/v2/jose-play/alpine/manifests/latest
+2022/03/17 23:13:32 GET /v2/jose-play/alpine/manifests/latest HTTP/1.1
+Host: jfrog.aaw.cloud.statcan.ca
+User-Agent: crane/v0.8.0 go-containerregistry/v0.8.0
+Accept: application/vnd.docker.distribution.manifest.v1+json,application/vnd.docker.distribution.manifest.v1+prettyjws,application/vnd.docker.distribution.manifest.v2+json,application/vnd.oci.image.manifest.v1+json,application/vnd.docker.distribution.manifest.list.v2+json,application/vnd.oci.image.index.v1+json
+Authorization: <redacted>
+Accept-Encoding: gzip
+
+
+2022/03/17 23:13:33 <-- 200 https://jfrog.aaw.cloud.statcan.ca/v2/jose-play/alpine/manifests/latest (969.997366ms)
+2022/03/17 23:13:33 HTTP/2.0 200 OK
+Content-Length: 1638
+Accept-Ranges: bytes
+Content-Disposition: attachment; filename="list.manifest.json"
+Content-Type: application/vnd.docker.distribution.manifest.list.v2+json
+Date: Fri, 18 Mar 2022 03:13:33 GMT
+Docker-Content-Digest: sha256:d6d0a0eb4d40ef96f2310ead734848b9c819bb97c9d846385c4aca1767186cd4
+Docker-Distribution-Api-Version: registry/2.0
+Etag: e88ef98fa89f668febf3b1c89523f574970d7541
+Last-Modified: Fri, 18 Mar 2022 03:13:33 GMT
+Server: istio-envoy
+X-Artifactory-Filename: list.manifest.json
+X-Artifactory-Id: ebf2d744300bccf50d12b7eac2b996fdf7369aaf
+X-Artifactory-Node-Id: jfrog-platform-artifactory-ha-primary-0
+X-Checksum-Md5: dd734618bc5633854a0d65dc8e1a463f
+X-Checksum-Sha1: e88ef98fa89f668febf3b1c89523f574970d7541
+X-Checksum-Sha256: d6d0a0eb4d40ef96f2310ead734848b9c819bb97c9d846385c4aca1767186cd4
+X-Envoy-Upstream-Service-Time: 938
+X-Jfrog-Version: Artifactory/7.19.13 71913900
+
+{"manifests":[{"digest":"sha256:14b55f5bb845c7b810283290ce057f175de87838be56f49060e941580032c60c","mediaType":"application\/vnd.docker.distribution.manifest.v2+json","platform":{"architecture":"amd64","os":"linux"},"size":528},{"digest":"sha256:40f396779ba29da16f29f780963bd4ad5b7719e3eb5dec04516d583713256aa8","mediaType":"application\/vnd.docker.distribution.manifest.v2+json","platform":{"architecture":"arm","os":"linux","variant":"v6"},"size":528},{"digest":"sha256:392d9d85dff31e34d756be33579f05ef493cb1b0edccc36a11b3295365553bfd","mediaType":"application\/vnd.docker.distribution.manifest.v2+json","platform":{"architecture":"arm","os":"linux","variant":"v7"},"size":528},{"digest":"sha256:4fb53f12d2ec18199f16d7c305a12c54cda68cc622484bfc3b7346a44d5024ac","mediaType":"application\/vnd.docker.distribution.manifest.v2+json","platform":{"architecture":"arm64","os":"linux","variant":"v8"},"size":528},{"digest":"sha256:e8d9cf28250078f08e890a3466efbefda68a8feac03cc4076d3ada3397370d6e","mediaType":"application\/vnd.docker.distribution.manifest.v2+json","platform":{"architecture":"386","os":"linux"},"size":528},{"digest":"sha256:d860569a59af627dafee0b0f2b8069e31b07fbdaebe552904dbaec28047ccf64","mediaType":"application\/vnd.docker.distribution.manifest.v2+json","platform":{"architecture":"ppc64le","os":"linux"},"size":528},{"digest":"sha256:6640b198347e5bf1e9a9dc5fc864e927154275dc31f3d26193b74350a5c94c9f","mediaType":"application\/vnd.docker.distribution.manifest.v2+json","platform":{"architecture":"s390x","os":"linux"},"size":528}],"mediaType":"application\/vnd.docker.distribution.manifest.list.v2+json","schemaVersion":2}
+2022/03/17 23:13:33 --> GET https://jfrog.aaw.cloud.statcan.ca/v2/jose-play/alpine/manifests/sha256:14b55f5bb845c7b810283290ce057f175de87838be56f49060e941580032c60c
+2022/03/17 23:13:33 GET /v2/jose-play/alpine/manifests/sha256:14b55f5bb845c7b810283290ce057f175de87838be56f49060e941580032c60c HTTP/1.1
+Host: jfrog.aaw.cloud.statcan.ca
+User-Agent: crane/v0.8.0 go-containerregistry/v0.8.0
+Accept: application/vnd.docker.distribution.manifest.v2+json
+Authorization: <redacted>
+Accept-Encoding: gzip
+
+
+2022/03/17 23:14:14 <-- 200 https://jfrog.aaw.cloud.statcan.ca/v2/jose-play/alpine/manifests/sha256:14b55f5bb845c7b810283290ce057f175de87838be56f49060e941580032c60c (40.715708107s)
+2022/03/17 23:14:14 HTTP/2.0 200 OK
+--- this is where it differs from the fail.txt, determine at which point it actually starts pulling?
+
+
+
+
+Content-Length: 528
+Accept-Ranges: bytes
+Content-Disposition: attachment; filename="manifest.json"
+Content-Type: application/vnd.docker.distribution.manifest.v2+json
+Date: Fri, 18 Mar 2022 03:14:13 GMT
+Docker-Content-Digest: sha256:14b55f5bb845c7b810283290ce057f175de87838be56f49060e941580032c60c
+Docker-Distribution-Api-Version: registry/2.0
+Etag: b63b9a332be445eb09da221a4287be6983523b6b
+Last-Modified: Fri, 18 Mar 2022 03:13:33 GMT
+Server: istio-envoy
+X-Artifactory-Filename: manifest.json
+X-Artifactory-Id: ebf2d744300bccf50d12b7eac2b996fdf7369aaf
+X-Artifactory-Node-Id: jfrog-platform-artifactory-ha-primary-0
+X-Checksum-Md5: 5581950fc64857d917c0b3b8474b4fc0
+X-Checksum-Sha1: b63b9a332be445eb09da221a4287be6983523b6b
+X-Checksum-Sha256: 14b55f5bb845c7b810283290ce057f175de87838be56f49060e941580032c60c
+X-Envoy-Upstream-Service-Time: 40689
+X-Jfrog-Version: Artifactory/7.19.13 71913900
+
+{
+   "schemaVersion": 2,
+   "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+   "config": {
+      "mediaType": "application/vnd.docker.container.image.v1+json",
+      "size": 1472,
+      "digest": "sha256:e9adb5357e84d853cc3eb08cd4d3f9bd6cebdb8a67f0415cc884be7b0202416d"
+   },
+   "layers": [
+      {
+         "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+         "size": 2812636,
+         "digest": "sha256:3d243047344378e9b7136d552d48feb7ea8b6fe14ce0990e0cc011d5e369626a"
+      }
+   ]
+}
+2022/03/17 23:14:14 --> GET https://jfrog.aaw.cloud.statcan.ca/v2/jose-play/alpine/blobs/sha256:e9adb5357e84d853cc3eb08cd4d3f9bd6cebdb8a67f0415cc884be7b0202416d
+2022/03/17 23:14:14 GET /v2/jose-play/alpine/blobs/sha256:e9adb5357e84d853cc3eb08cd4d3f9bd6cebdb8a67f0415cc884be7b0202416d HTTP/1.1
+Host: jfrog.aaw.cloud.statcan.ca
+User-Agent: crane/v0.8.0 go-containerregistry/v0.8.0
+Authorization: <redacted>
+Accept-Encoding: gzip
+
+
+2022/03/17 23:14:14 <-- 200 https://jfrog.aaw.cloud.statcan.ca/v2/jose-play/alpine/blobs/sha256:e9adb5357e84d853cc3eb08cd4d3f9bd6cebdb8a67f0415cc884be7b0202416d (599.392729ms)
+2022/03/17 23:14:14 HTTP/2.0 200 OK
+Content-Length: 1472
+Accept-Ranges: bytes
+Content-Disposition: attachment; filename="sha256__e9adb5357e84d853cc3eb08cd4d3f9bd6cebdb8a67f0415cc884be7b0202416d"
+Content-Type: application/octet-stream
+Date: Fri, 18 Mar 2022 03:14:14 GMT
+Docker-Content-Digest: sha256:e9adb5357e84d853cc3eb08cd4d3f9bd6cebdb8a67f0415cc884be7b0202416d
+Docker-Distribution-Api-Version: registry/2.0
+Etag: 3ff698f67ef375d24bf8e81828c10781a39c9e54
+Last-Modified: Thu, 17 Mar 2022 04:02:43 GMT
+Server: istio-envoy
+X-Artifactory-Filename: sha256__e9adb5357e84d853cc3eb08cd4d3f9bd6cebdb8a67f0415cc884be7b0202416d
+X-Artifactory-Id: ebf2d744300bccf50d12b7eac2b996fdf7369aaf
+X-Artifactory-Node-Id: jfrog-platform-artifactory-ha-primary-0
+X-Checksum-Md5: d1d7f6ea08b2d9409ed74eba7a6a9485
+X-Checksum-Sha1: 3ff698f67ef375d24bf8e81828c10781a39c9e54
+X-Checksum-Sha256: e9adb5357e84d853cc3eb08cd4d3f9bd6cebdb8a67f0415cc884be7b0202416d
+X-Envoy-Upstream-Service-Time: 572
+X-Jfrog-Version: Artifactory/7.19.13 71913900
+
+{"architecture":"amd64","config":{"Hostname":"","Domainname":"","User":"","AttachStdin":false,"AttachStdout":false,"AttachStderr":false,"Tty":false,"OpenStdin":false,"StdinOnce":false,"Env":["PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"],"Cmd":["/bin/sh"],"Image":"sha256:e211ac20c5c7aaa4ed30d5553654d4679082ec48efcb4d164bac6d50d62653fd","Volumes":null,"WorkingDir":"","Entrypoint":null,"OnBuild":null,"Labels":null},"container":"b6ba94212561a8075e1d324fb050db160e25035ffcfbbe5b410e411e2b7000e2","container_config":{"Hostname":"b6ba94212561","Domainname":"","User":"","AttachStdin":false,"AttachStdout":false,"AttachStderr":false,"Tty":false,"OpenStdin":false,"StdinOnce":false,"Env":["PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"],"Cmd":["/bin/sh","-c","#(nop) ","CMD [\"/bin/sh\"]"],"Image":"sha256:e211ac20c5c7aaa4ed30d5553654d4679082ec48efcb4d164bac6d50d62653fd","Volumes":null,"WorkingDir":"","Entrypoint":null,"OnBuild":null,"Labels":{}},"created":"2022-03-17T04:01:59.188838147Z","docker_version":"20.10.12","history":[{"created":"2022-03-17T04:01:58.883733237Z","created_by":"/bin/sh -c #(nop) ADD file:cf4b631a115c2bbfbd81cad2d3041bceb64a8136aac92ba8a63b6c51d60af764 in / "},{"created":"2022-03-17T04:01:59.188838147Z","created_by":"/bin/sh -c #(nop)  CMD [\"/bin/sh\"]","empty_layer":true}],"os":"linux","rootfs":{"type":"layers","diff_ids":["sha256:5e03d8cae8773cb694fff1d55da34a40d23c2349087ed15ce68476395d33753c"]}}
+2022/03/17 23:14:14 Layer sha256:3d243047344378e9b7136d552d48feb7ea8b6fe14ce0990e0cc011d5e369626a not found (compressed) in cache, getting
+2022/03/17 23:14:14 --> GET https://jfrog.aaw.cloud.statcan.ca/v2/jose-play/alpine/blobs/sha256:3d243047344378e9b7136d552d48feb7ea8b6fe14ce0990e0cc011d5e369626a [body redacted: omitting binary blobs from logs]
+2022/03/17 23:14:14 GET /v2/jose-play/alpine/blobs/sha256:3d243047344378e9b7136d552d48feb7ea8b6fe14ce0990e0cc011d5e369626a HTTP/1.1
+Host: jfrog.aaw.cloud.statcan.ca
+User-Agent: crane/v0.8.0 go-containerregistry/v0.8.0
+Authorization: <redacted>
+Accept-Encoding: gzip
+
+
+2022/03/17 23:14:14 <-- 200 https://jfrog.aaw.cloud.statcan.ca/v2/jose-play/alpine/blobs/sha256:3d243047344378e9b7136d552d48feb7ea8b6fe14ce0990e0cc011d5e369626a (94.283824ms) [body redacted: omitting binary blobs from logs]
+2022/03/17 23:14:14 HTTP/2.0 200 OK
+Content-Length: 2812636
+Accept-Ranges: bytes
+Content-Disposition: attachment; filename="sha256__3d243047344378e9b7136d552d48feb7ea8b6fe14ce0990e0cc011d5e369626a"
+Content-Type: application/octet-stream
+Date: Fri, 18 Mar 2022 03:14:14 GMT
+Docker-Content-Digest: sha256:3d243047344378e9b7136d552d48feb7ea8b6fe14ce0990e0cc011d5e369626a
+Docker-Distribution-Api-Version: registry/2.0
+Etag: 8d89d99a83d2b95096bdc7773ba788058cc90674
+Last-Modified: Thu, 17 Mar 2022 04:02:41 GMT
+Server: istio-envoy
+X-Artifactory-Filename: sha256__3d243047344378e9b7136d552d48feb7ea8b6fe14ce0990e0cc011d5e369626a
+X-Artifactory-Id: ebf2d744300bccf50d12b7eac2b996fdf7369aaf
+X-Artifactory-Node-Id: jfrog-platform-artifactory-ha-primary-0
+X-Checksum-Md5: 944d1c6604a23861369a3f8638c046aa
+X-Checksum-Sha1: 8d89d99a83d2b95096bdc7773ba788058cc90674
+X-Checksum-Sha256: 3d243047344378e9b7136d552d48feb7ea8b6fe14ce0990e0cc011d5e369626a
+X-Envoy-Upstream-Service-Time: 61
+X-Jfrog-Version: Artifactory/7.19.13 71913900

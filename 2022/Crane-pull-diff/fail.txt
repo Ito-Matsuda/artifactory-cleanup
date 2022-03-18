@@ -1,0 +1,105 @@
+jose@jose-VirtualBox:~/Documents/temp$ crane pull jfrog.aaw.cloud.statcan.ca/jose-play/ubuntu:16.04 ubuntu20 -c temp -v
+2022/03/17 23:12:40 --> GET https://jfrog.aaw.cloud.statcan.ca/v2/
+2022/03/17 23:12:40 GET /v2/ HTTP/1.1
+Host: jfrog.aaw.cloud.statcan.ca
+User-Agent: crane/v0.8.0 go-containerregistry/v0.8.0
+Accept-Encoding: gzip
+
+
+2022/03/17 23:12:40 <-- 401 https://jfrog.aaw.cloud.statcan.ca/v2/ (188.670735ms)
+2022/03/17 23:12:40 HTTP/2.0 401 Unauthorized
+Content-Length: 87
+Content-Type: application/json;charset=ISO-8859-1
+Date: Fri, 18 Mar 2022 03:12:40 GMT
+Docker-Distribution-Api-Version: registry/2.0
+Server: istio-envoy
+Www-Authenticate: Bearer realm="https://jfrog.aaw.cloud.statcan.ca/v2/token",service="jfrog.aaw.cloud.statcan.ca"
+X-Envoy-Upstream-Service-Time: 15
+
+{"errors":[{"code":"UNAUTHORIZED","message":"authentication required","detail":null}]}
+
+2022/03/17 23:12:40 --> GET https://jfrog.aaw.cloud.statcan.ca/v2/token?scope=repository%3Ajose-play%2Fubuntu%3Apull&service=jfrog.aaw.cloud.statcan.ca [body redacted: basic token response contains credentials]
+2022/03/17 23:12:40 GET /v2/token?scope=repository%3Ajose-play%2Fubuntu%3Apull&service=jfrog.aaw.cloud.statcan.ca HTTP/1.1
+Host: jfrog.aaw.cloud.statcan.ca
+User-Agent: crane/v0.8.0 go-containerregistry/v0.8.0
+Accept-Encoding: gzip
+
+
+2022/03/17 23:12:40 <-- 200 https://jfrog.aaw.cloud.statcan.ca/v2/token?scope=repository%3Ajose-play%2Fubuntu%3Apull&service=jfrog.aaw.cloud.statcan.ca (42.162788ms) [body redacted: basic token response contains credentials]
+2022/03/17 23:12:40 HTTP/2.0 200 OK
+Connection: close
+Content-Type: application/json
+Date: Fri, 18 Mar 2022 03:12:40 GMT
+Server: istio-envoy
+X-Artifactory-Id: ebf2d744300bccf50d12b7eac2b996fdf7369aaf
+X-Artifactory-Node-Id: jfrog-platform-artifactory-ha-primary-0
+X-Envoy-Upstream-Service-Time: 18
+X-Jfrog-Version: Artifactory/7.19.13 71913900
+
+
+2022/03/17 23:12:40 --> GET https://jfrog.aaw.cloud.statcan.ca/v2/jose-play/ubuntu/manifests/16.04
+2022/03/17 23:12:40 GET /v2/jose-play/ubuntu/manifests/16.04 HTTP/1.1
+Host: jfrog.aaw.cloud.statcan.ca
+User-Agent: crane/v0.8.0 go-containerregistry/v0.8.0
+Accept: application/vnd.docker.distribution.manifest.v1+json,application/vnd.docker.distribution.manifest.v1+prettyjws,application/vnd.docker.distribution.manifest.v2+json,application/vnd.oci.image.manifest.v1+json,application/vnd.docker.distribution.manifest.list.v2+json,application/vnd.oci.image.index.v1+json
+Authorization: <redacted>
+Accept-Encoding: gzip
+
+
+2022/03/17 23:12:40 <-- 200 https://jfrog.aaw.cloud.statcan.ca/v2/jose-play/ubuntu/manifests/16.04 (109.493047ms)
+2022/03/17 23:12:40 HTTP/2.0 200 OK
+Content-Length: 1418
+Accept-Ranges: bytes
+Content-Disposition: attachment; filename="list.manifest.json"
+Content-Type: application/vnd.docker.distribution.manifest.list.v2+json
+Date: Fri, 18 Mar 2022 03:12:40 GMT
+Docker-Content-Digest: sha256:0f71fa8d4d2d4292c3c617fda2b36f6dabe5c8b6e34c3dc5b0d17d4e704bd39c
+Docker-Distribution-Api-Version: registry/2.0
+Etag: eeab672b01cdd564800561eb8e7c2d22914c2f3e
+Last-Modified: Fri, 18 Mar 2022 03:11:27 GMT
+Server: istio-envoy
+X-Artifactory-Filename: list.manifest.json
+X-Artifactory-Id: ebf2d744300bccf50d12b7eac2b996fdf7369aaf
+X-Artifactory-Node-Id: jfrog-platform-artifactory-ha-primary-0
+X-Checksum-Md5: 0d7c0043ec18d021f7b135fea1f17b4d
+X-Checksum-Sha1: eeab672b01cdd564800561eb8e7c2d22914c2f3e
+X-Checksum-Sha256: 0f71fa8d4d2d4292c3c617fda2b36f6dabe5c8b6e34c3dc5b0d17d4e704bd39c
+X-Envoy-Upstream-Service-Time: 75
+X-Jfrog-Version: Artifactory/7.19.13 71913900
+
+{"manifests":[{"digest":"sha256:a3785f78ab8547ae2710c89e627783cfa7ee7824d3468cae6835c9f4eae23ff7","mediaType":"application\/vnd.docker.distribution.manifest.v2+json","platform":{"architecture":"amd64","os":"linux"},"size":1150},{"digest":"sha256:b722e2654241f9681f4719dce7aa16a2f0c35769e17a636f5b39a33967d1aeb8","mediaType":"application\/vnd.docker.distribution.manifest.v2+json","platform":{"architecture":"arm","os":"linux","variant":"v7"},"size":1150},{"digest":"sha256:70fa660340a344b46cc56b3606dc8abd3bf48b5cbce13d01c720e9793a6bc3c0","mediaType":"application\/vnd.docker.distribution.manifest.v2+json","platform":{"architecture":"arm64","os":"linux","variant":"v8"},"size":1150},{"digest":"sha256:4a6759446930ee402a2091605c0911f237ad18b5c250a535d11563d9402eb15a","mediaType":"application\/vnd.docker.distribution.manifest.v2+json","platform":{"architecture":"386","os":"linux"},"size":1150},{"digest":"sha256:cf25d111d193288d47d20a4e5d42a68dc2af24bb962853b067752eca3914355e","mediaType":"application\/vnd.docker.distribution.manifest.v2+json","platform":{"architecture":"ppc64le","os":"linux"},"size":1150},{"digest":"sha256:5fea5a070916f61785140faa8e16fa8bf7ca3f152ceed9c48154f8aca4c3667e","mediaType":"application\/vnd.docker.distribution.manifest.v2+json","platform":{"architecture":"s390x","os":"linux"},"size":1150}],"mediaType":"application\/vnd.docker.distribution.manifest.list.v2+json","schemaVersion":2}
+2022/03/17 23:12:40 --> GET https://jfrog.aaw.cloud.statcan.ca/v2/jose-play/ubuntu/manifests/sha256:a3785f78ab8547ae2710c89e627783cfa7ee7824d3468cae6835c9f4eae23ff7
+2022/03/17 23:12:40 GET /v2/jose-play/ubuntu/manifests/sha256:a3785f78ab8547ae2710c89e627783cfa7ee7824d3468cae6835c9f4eae23ff7 HTTP/1.1
+Host: jfrog.aaw.cloud.statcan.ca
+User-Agent: crane/v0.8.0 go-containerregistry/v0.8.0
+Accept: application/vnd.docker.distribution.manifest.v2+json
+Authorization: <redacted>
+Accept-Encoding: gzip
+
+
+2022/03/17 23:12:40 <-- 403 https://jfrog.aaw.cloud.statcan.ca/v2/jose-play/ubuntu/manifests/sha256:a3785f78ab8547ae2710c89e627783cfa7ee7824d3468cae6835c9f4eae23ff7 (117.414614ms)
+2022/03/17 23:12:40 HTTP/2.0 403 Forbidden
+-- here is where it differs it closes here. 
+
+
+
+
+
+Connection: close
+Content-Type: application/json
+Date: Fri, 18 Mar 2022 03:12:40 GMT
+Docker-Distribution-Api-Version: registry/2.0
+Server: istio-envoy
+X-Artifactory-Id: ebf2d744300bccf50d12b7eac2b996fdf7369aaf
+X-Artifactory-Node-Id: jfrog-platform-artifactory-ha-primary-0
+X-Envoy-Upstream-Service-Time: 94
+X-Jfrog-Version: Artifactory/7.19.13 71913900
+
+{
+  "errors" : [ {
+    "status" : 403,
+    "message" : "Forbidden" 
+    ^ could grep for this
+  } ]
+}
+Error: GET https://jfrog.aaw.cloud.statcan.ca/v2/jose-play/ubuntu/manifests/sha256:a3785f78ab8547ae2710c89e627783cfa7ee7824d3468cae6835c9f4eae23ff7: : Forbidden

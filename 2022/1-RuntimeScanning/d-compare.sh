@@ -28,9 +28,27 @@ sed -i 's/^[^;]*;//g' d-formatted-impacted-artifacts.txt
 
 while IFS= read -r imageCheck; do
   # extract the image from the file, trim the quotes, and replace the : with a ;
-  # Look for the image in the imapacted artifacts and if found print the line to the list. 
+  # Look for the image in the impacted artifacts and if found print the line to the list. 
   if grep -Fxq "$imageCheck" d-formatted-impacted-artifacts.txt
   then
      echo $imageCheck >> d-impacted-user-images.txt
   fi
 done < d-notebook-artifactory-comp.txt
+
+## Using d-impacted-user-images compare with a-kubectl-notebook.txt and get a full list including namespaces
+while read -r line
+do
+  # extract the image from the file, trim the quotes, and replace the : with a ;
+  # Remove up to the '/' because artifactory may retrieve from the cache
+  imageCheck=$(echo $line | jq -c '.ImagePath' | tr -d '"' | sed 's/^[^\/]*\///g' | sed 's/:/;/g')
+  echo $imageCheck
+  # Look for the image in the imapacted artifacts and if found print the line to the list. 
+  if grep -Fxq "$imageCheck" d-impacted-user-images.txt 
+  then
+     echo $line >> d-user-items.txt
+  fi
+done < a-kubectl-notebook.txt
+
+# Output results to Console (just to see what is identified)
+echo "Impacted Images for $(date)"
+cat d-user-items.txt

@@ -31,9 +31,6 @@ RUN curl -LO "${KUBECTL_URL}" \
     && chmod +x ./kubectl \
     && mv ./kubectl /usr/local/bin/kubectl
 
-COPY 1-RuntimeScanning /home/$NOTROOTUSER
-COPY run-job.sh /home/$NOTROOTUSER
-
 # Operate in non root
 RUN useradd $NOTROOTUSER
 ENV NOTROOTUSER="${NOTROOTUSER}" \
@@ -53,8 +50,11 @@ ENV PATH $PATH:/usr/local/go/bin:$GOPATH/bin
 #Install Crane
 RUN go install github.com/google/go-containerregistry/cmd/crane@$CRANE_VERSION
 
-
+COPY 1-RuntimeScanning /home/$NOTROOTUSER
+COPY run-job.sh /home/$NOTROOTUSER
+RUN chmod -R 755 /home/$NOTROOTUSER
+RUN chown -R $NOTROOTUSER /home/$NOTROOTUSER
+USER $NOTROOTUSER
 
 # docker run -it --rm --entrypoint /bin/bash test
-# CMD ["run-job.sh"]
-CMD ["echo", "Hello World"]
+CMD ["./run-job.sh"]

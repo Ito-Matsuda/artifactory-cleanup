@@ -10,18 +10,18 @@
 ###############################################
 
 # All these scripts would be copied to the generic landing area of the docker container
-echo "Starting Artifactory cleanup\n"
+echo "Starting Artifactory cleanup"
 
-echo "Obtaining a list of notebook images being used in the cluster------------\n"
+echo "Obtaining a list of notebook images being used in the cluster------------"
 ./a-get-list-of-notebook-img.sh
 
-echo "Initiating Pulls------------\n"
+echo "Initiating Pulls------------"
 ./b-pull.sh
 
-echo "Getting a list of vulnerabilities------------\n"
+echo "Getting a list of vulnerabilities------------"
 ./c-xray-get-vulnerabilities.sh
 
-echo "Comparing and outputting a list of vulnerable images in the cluster------------\n"
+echo "Comparing and outputting a list of vulnerable images in the cluster------------"
 ./d-compare.sh
 
 

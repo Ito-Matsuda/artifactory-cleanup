@@ -15,6 +15,7 @@
 ### In the event that the output does not match what we expect break after 10 sleeps
 ###############################################
 
+crane auth login -u $JFROG_USERNAME -p $JFROG_PASSWORD jfrog.artifactory.cloud.statcan.ca
 while IFS= read -r line; do
   crane pull jfrog.aaw.cloud.statcan.ca/$line temporary 
   rm temporary

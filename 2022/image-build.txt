@@ -1,0 +1,82 @@
+Sending build context to Docker daemon  65.54kB
+Step 1/26 : FROM ubuntu:20.04
+ ---> ba6acccedd29
+Step 2/26 : USER root
+ ---> Using cache
+ ---> c52dc02b7b1d
+Step 3/26 : ARG NOTROOTUSER="jovyan"
+ ---> Using cache
+ ---> df38c20bb0e3
+Step 4/26 : ARG NB_UID="1000"
+ ---> Using cache
+ ---> 8f5a1e7a519f
+Step 5/26 : ARG NB_GID="100"
+ ---> Using cache
+ ---> f8208bce077b
+Step 6/26 : WORKDIR /home/$NOTROOTUSER
+ ---> Using cache
+ ---> 8e242b1f3815
+Step 7/26 : ENV GOPATH=/home/jovyan/go
+ ---> Using cache
+ ---> 08b62d0e6f30
+Step 8/26 : RUN apt-get update &&     apt-get install -y --no-install-recommends       'jq'       'curl'       'wget'       'uidmap'       'dbus-user-session'       'ca-certificates'       'gnupg'       'lsb-release'      'git'
+ ---> Using cache
+ ---> f4d1df715825
+Step 9/26 : ARG KUBECTL_VERSION=v1.15.10
+ ---> Using cache
+ ---> 465a82d8e616
+Step 10/26 : ARG KUBECTL_URL=https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl
+ ---> Using cache
+ ---> 088c86ddd453
+Step 11/26 : ARG KUBECTL_SHA=38a0f73464f1c39ca383fd43196f84bdbe6e553fe3e677b6e7012ef7ad5eaf2b
+ ---> Using cache
+ ---> 89ef78815bf2
+Step 12/26 : RUN curl -LO "${KUBECTL_URL}"     && echo "${KUBECTL_SHA} kubectl" | sha256sum -c -     && chmod +x ./kubectl     && mv ./kubectl /usr/local/bin/kubectl
+ ---> Using cache
+ ---> 2a0deee452f9
+Step 13/26 : RUN useradd $NOTROOTUSER
+ ---> Using cache
+ ---> 775e7dd91153
+Step 14/26 : ENV NOTROOTUSER="${NOTROOTUSER}"     NB_UID=${NB_UID}     NB_GID=${NB_GID}
+ ---> Using cache
+ ---> e0eff33d0210
+Step 15/26 : ARG GO_VERSION=1.16.7
+ ---> Using cache
+ ---> 90507ae790b9
+Step 16/26 : ARG GO_SHA=7fe7a73f55ba3e2285da36f8b085e5c0159e9564ef5f63ee0ed6b818ade8ef04
+ ---> Using cache
+ ---> 99077c171766
+Step 17/26 : ARG CRANE_VERSION=v0.8.0
+ ---> Using cache
+ ---> 7d1bce8c7537
+Step 18/26 : RUN curl -OL https://golang.org/dl/go$GO_VERSION.linux-amd64.tar.gz     && echo "${GO_SHA} go$GO_VERSION.linux-amd64.tar.gz" | sha256sum -c -     && tar -C /usr/local -xvf go$GO_VERSION.linux-amd64.tar.gz
+ ---> Using cache
+ ---> b7f0847690b0
+Step 19/26 : ENV PATH $PATH:/usr/local/go/bin:$GOPATH/bin
+ ---> Using cache
+ ---> 3940adf4785d
+Step 20/26 : RUN go install github.com/google/go-containerregistry/cmd/crane@$CRANE_VERSION
+ ---> Using cache
+ ---> 4bd5941da6e7
+Step 21/26 : COPY 1-RuntimeScanning /home/$NOTROOTUSER
+ ---> a8e7db938f51
+Step 22/26 : COPY run-job.sh /home/$NOTROOTUSER
+ ---> c55cfa83b8f2
+Step 23/26 : RUN chmod -R 755 /home/$NOTROOTUSER
+ ---> Running in ec7b2870dd83
+Removing intermediate container ec7b2870dd83
+ ---> 7e529debf314
+Step 24/26 : RUN chown -R $NOTROOTUSER /home/$NOTROOTUSER
+ ---> Running in d003a9aa918c
+Removing intermediate container d003a9aa918c
+ ---> 9336cfbb5024
+Step 25/26 : USER $NOTROOTUSER
+ ---> Running in fc1e389d2314
+Removing intermediate container fc1e389d2314
+ ---> 5334f3fdb0c4
+Step 26/26 : CMD ["./run-job.sh"]
+ ---> Running in c597cca0bc94
+Removing intermediate container c597cca0bc94
+ ---> e2802eb13a4d
+Successfully built e2802eb13a4d
+Successfully tagged test:latest

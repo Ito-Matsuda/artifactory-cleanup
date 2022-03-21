@@ -59,24 +59,26 @@ Step 20/26 : RUN go install github.com/google/go-containerregistry/cmd/crane@$CR
  ---> Using cache
  ---> 4bd5941da6e7
 Step 21/26 : COPY 1-RuntimeScanning /home/$NOTROOTUSER
- ---> a8e7db938f51
+ ---> Using cache
+ ---> c24acd34ff63
 Step 22/26 : COPY run-job.sh /home/$NOTROOTUSER
- ---> c55cfa83b8f2
+ ---> Using cache
+ ---> fe5c749d3ddd
 Step 23/26 : RUN chmod -R 755 /home/$NOTROOTUSER
- ---> Running in ec7b2870dd83
-Removing intermediate container ec7b2870dd83
- ---> 7e529debf314
+ ---> Running in 712c643c5f11
+Removing intermediate container 712c643c5f11
+ ---> 62ce6e71b4c1
 Step 24/26 : RUN chown -R $NOTROOTUSER /home/$NOTROOTUSER
- ---> Running in d003a9aa918c
-Removing intermediate container d003a9aa918c
- ---> 9336cfbb5024
+ ---> Running in e3a56d41bd05
+Removing intermediate container e3a56d41bd05
+ ---> 7caa0bdbaf12
 Step 25/26 : USER $NOTROOTUSER
- ---> Running in fc1e389d2314
-Removing intermediate container fc1e389d2314
- ---> 5334f3fdb0c4
+ ---> Running in 362f5c9ec961
+Removing intermediate container 362f5c9ec961
+ ---> 08c7e04783f0
 Step 26/26 : CMD ["./run-job.sh"]
- ---> Running in c597cca0bc94
-Removing intermediate container c597cca0bc94
- ---> e2802eb13a4d
-Successfully built e2802eb13a4d
+ ---> Running in dbb0e98b7d1e
+Removing intermediate container dbb0e98b7d1e
+ ---> 0624f32b744a
+Successfully built 0624f32b744a
 Successfully tagged test:latest

@@ -15,7 +15,7 @@
 ### In the event that the output does not match what we expect break after 10 sleeps
 ###############################################
 
-crane auth login -u $JFROG_USERNAME -p $JFROG_PASSWORD jfrog.artifactory.cloud.statcan.ca
+crane auth login -u $JFROG_USERNAME -p $JFROG_PASSWORD jfrog.aaw.cloud.statcan.ca
 while IFS= read -r line; do
   crane pull jfrog.aaw.cloud.statcan.ca/$line temporary 
   rm temporary
@@ -23,7 +23,8 @@ done < a-uniqe-nb-images.txt
 
 
 ## TEST, this doesnt work super well
-#until crane pull jfrog.aaw.cloud.statcan.ca/jose-play/busybox:stable temporary 2>&1 \
+# crane auth login jfrog.aaw.cloud.statcan.ca -u aaa -p aaaa
+#until crane pull jfrog.aaw.cloud.statcan.ca/jose-play/busybox:stable-glibc temporary 2>&1 \
 #  | grep -m 1 "(compressed) in cache\|Forbidden"
 #  do
 #    sleep 1
